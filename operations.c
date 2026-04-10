@@ -6,7 +6,7 @@
 /*   By: lvan-win <lvan-win@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/09 19:09:44 by lvan-win      #+#    #+#                 */
-/*   Updated: 2026/04/09 19:55:12 by lvan-win      ########   odam.nl         */
+/*   Updated: 2026/04/10 12:55:02 by lvan-win      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,30 @@ void	rotate(t_stack **a)
 {
 	t_stack	*first;
 	t_stack *second;
+	t_stack	*last;
 	
 	if (!a || !*a || !(*a)->next)
 		return ;
 	first = *a;
 	second = first->next;
-	ft_lstadd_back(a, first);
+	last = last_el(*a);
+	last->next = first;
 	first->next = NULL;
 	*a = second;
+}
+
+void	rev_rotate(t_stack **a)
+{
+	t_stack	*first;
+	t_stack *second_to_last;
+	t_stack	*last;
+
+	if (!a || !*a || !(*a)->next)
+		return ;
+	first = *a;
+	last = last_el(*a);
+	second_to_last = prev_el(*a, last);
+	last->next = first;
+	second_to_last->next = NULL;
+	*a = last;
 }
