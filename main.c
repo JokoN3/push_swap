@@ -6,7 +6,7 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/10 12:51:18 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/04/10 13:52:39 by yoneshev      ########   odam.nl         */
+/*   Updated: 2026/04/10 14:30:27 by lvan-win      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,17 @@ int main(int ac, char **av)
 {
 	(void)ac;
 	t_stack *stack_a;
+	t_stack *stack_b;
 
 	stack_a = NULL;
 	stack_a = init_stack_a(stack_a, av + 1);
+	stack_b = add_new_node();
+	push(&stack_a, &stack_b);
+	ft_putstr_fd("\nStack a:\n", 1);
 	print_stack(stack_a);
+	ft_putstr_fd("\nStack b:\n", 1);
+	print_stack(stack_b);
 	free_stack(stack_a);
+	free_stack(stack_b);
 	return (0);
 }
