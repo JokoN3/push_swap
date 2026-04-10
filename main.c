@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   push_swap.h                                        :+:    :+:            */
+/*   main.c                                             :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2026/04/09 18:13:52 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/04/10 12:51:00 by yoneshev      ########   odam.nl         */
+/*   Created: 2026/04/10 12:51:18 by yoneshev      #+#    #+#                 */
+/*   Updated: 2026/04/10 12:51:37 by yoneshev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "push_swap.h"
 
-# include <stddef.h>
-# include "limits.h"
-# include "libft/libft.h"
-
-typedef struct s_stack
+int main(int ac, char **av)
 {
-	int				num;
-	struct	s_stack *next;
-}	t_stack;
+	t_stack *stack_a;
 
-void	free_stack(t_stack *stack);
-t_stack	*init_stack_a(t_stack *stack_a, char **av);
-void	print_stack(t_stack *stack);
-t_stack	*add_new_node(void);
-
-#endif
+	stack_a = NULL;
+	stack_a = init_stack_a(stack_a, av + 1);
+	print_stack(stack_a);
+	free_stack(stack_a);
+	return (0);
+}
