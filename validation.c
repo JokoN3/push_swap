@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
+/*   validation.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2026/04/10 12:51:18 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/04/10 14:26:39 by yoneshev      ########   odam.nl         */
+/*   Created: 2026/04/10 14:18:26 by yoneshev      #+#    #+#                 */
+/*   Updated: 2026/04/10 14:26:11 by yoneshev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int main(int ac, char **av)
+int	check_int(char **av)
 {
-	t_stack *stack_a;
+	long long	ll_num;
 
-	if (validate_input(av) == 0)
-		return (1);
-	stack_a = NULL;
-	stack_a = init_stack_a(stack_a, av + 1);
-	print_stack(stack_a);
-	free_stack(stack_a);
-	return (0);
+	while (*av)
+	{
+		ll_num = ft_atoll(*av);
+		if (ll_num > INT_MAX || ll_num < INT_MIN)
+			return (0);
+		if (ll_num == 0 && ft_strlen(*av) != 1)
+			return (0);
+		av++;		
+	}
+}
+
+int	validate_input(char **av)
+{
+	if (check_int(av) == 0)
+		return (0);	
+	return (1);
 }
