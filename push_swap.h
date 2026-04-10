@@ -6,7 +6,7 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/09 18:13:52 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/04/10 13:34:06 by lvan-win      ########   odam.nl         */
+/*   Updated: 2026/04/10 14:18:50 by yoneshev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,6 @@ void	rotate(t_stack **a);
 void	rev_rotate(t_stack **a);
 t_stack	*last_el(t_stack *stack);
 t_stack	*prev_el(t_stack *stack, t_stack *element);
+int	validate_input(char **av);
 
 #endif
