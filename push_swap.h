@@ -6,7 +6,7 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/09 18:13:52 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/04/10 14:18:50 by yoneshev      ########   odam.nl         */
+/*   Updated: 2026/04/10 15:07:32 by yoneshev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,25 @@
 typedef struct s_stack
 {
 	int				num;
-	struct	s_stack *next;
+	struct s_stack	*next;
 }	t_stack;
 
 void	free_stack(t_stack *stack);
-t_stack	*init_stack_a(t_stack *stack_a, char **av);
 void	print_stack(t_stack *stack);
+t_stack	*last_el(t_stack *stack);
+t_stack	*prev_el(t_stack *stack, t_stack *element);
+
+t_stack	*init_stack_a(t_stack *stack_a, char **av);
 t_stack	*add_new_node(void);
+
 void	swap(t_stack **a);
 void	push(t_stack **a, t_stack **b);
 void	rotate(t_stack **a);
 void	rev_rotate(t_stack **a);
-t_stack	*last_el(t_stack *stack);
-t_stack	*prev_el(t_stack *stack, t_stack *element);
-int	validate_input(char **av);
+
+int		validate_input(char **av);
+int		check_dup(char **av);
+int		check_int(char **av);
+int		non_num_in_str(char *str);
 
 #endif
