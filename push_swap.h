@@ -6,7 +6,7 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/09 18:13:52 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/04/15 12:42:15 by lvan-win      ########   odam.nl         */
+/*   Updated: 2026/04/15 14:11:31 by lvan-win      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ void	free_stack(t_stack *stack);
 void	print_stack(t_stack *stack);
 t_stack	*last_el(t_stack *stack);
 t_stack	*prev_el(t_stack *stack, t_stack *element);
-int		*stack_len(t_stack *stack);
+int		stack_len(t_stack *stack);
+int		in_order(t_stack *stack);
 
 t_stack	*init_stack_a(t_stack *stack_a, char **av);
 t_stack	*add_new_node(void);
@@ -52,6 +53,8 @@ void	swap(t_stack **a);
 void	push(t_stack **a, t_stack **b);
 void	rotate(t_stack **a);
 void	rev_rotate(t_stack **a);
+
+void	bubble_sort(t_stack **a, t_op_counter *count);
 
 int		validate_input(char **av);
 int		check_dup(char **av);

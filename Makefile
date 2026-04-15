@@ -7,7 +7,7 @@ LIBFTDIR = libft
 LIBFT = $(LIBFTDIR)/libft.a
 
 SRCS = main.c parsing.c operations.c operations_utils.c \
-		validation.c
+		validation.c bubble_sort.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)

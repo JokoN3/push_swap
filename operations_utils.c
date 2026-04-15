@@ -6,7 +6,7 @@
 /*   By: lvan-win <lvan-win@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/10 12:27:27 by lvan-win      #+#    #+#                 */
-/*   Updated: 2026/04/15 12:59:15 by lvan-win      ########   odam.nl         */
+/*   Updated: 2026/04/15 14:23:50 by lvan-win      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	stack_len(t_stack *stack)
 	int		count;
 
 	count = 0;
-	while (stack != NULL)
+	while (stack)
 	{
 		count++;
 		stack = stack->next;
