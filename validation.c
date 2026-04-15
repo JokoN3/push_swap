@@ -6,7 +6,7 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/10 14:18:26 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/04/10 15:04:14 by yoneshev      ########   odam.nl         */
+/*   Updated: 2026/04/15 14:38:17 by yoneshev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,19 @@ int	check_dup(char **av)
 	return (1);
 }
 
-int	validate_input(char **av)
+int	validate_input(char **av, int allocated_av)
 {
 	if (check_int(av) == 0)
+	{
+		if (!allocated_av)
+			free_arr(av);
 		return (ft_putstr_fd("Error\n", 1), 0);
+	}
 	if (check_dup(av) == 0)
+	{
+		if (!allocated_av)
+			free_arr(av);
 		return (ft_putstr_fd("Error\n", 1), 0);
+	}	
 	return (1);
 }

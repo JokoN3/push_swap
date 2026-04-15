@@ -6,32 +6,12 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/10 12:17:22 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/04/10 14:18:23 by yoneshev      ########   odam.nl         */
+/*   Updated: 2026/04/15 14:27:28 by yoneshev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*add_new_node(void)
-{
-	t_stack	*new;
-
-	new = malloc(sizeof(*new));
-	if (!new)
-		return (NULL);
-	new->next = NULL;
-	return (new);
-}
-
-void	print_stack(t_stack *stack)
-{
-	while(stack)
-	{
-		ft_putnbr_fd(stack->num, 1);
-		ft_putchar_fd('\n', 1);
-		stack = stack->next;
-	}
-}
 
 t_stack	*init_stack_a(t_stack *stack_a, char **av)
 {
@@ -57,14 +37,26 @@ t_stack	*init_stack_a(t_stack *stack_a, char **av)
 	return (head);
 }
 
-void	free_stack(t_stack *stack)
+int	check_for_flags(char **av, int *strategy, int *bench)
 {
-	t_stack	*node;
+	int	offset;
 
-	while (stack)
-	{
-		node = stack->next;
-		free(stack);
-		stack = node;
-	}
+	offset = 1;
+	if (!ft_strcmp(*av, "--adaptive") || !ft_strcmp(av[1], "--adaptive"))
+		*strategy = ADAPTIVE;
+	else if (!ft_strcmp(*av, "--simple") || !ft_strcmp(av[1], "--simple"))
+		*strategy = SIMPLE;
+	else if (!ft_strcmp(*av, "--medium") || !ft_strcmp(av[1], "--medium"))
+		*strategy = MEDIUM;
+	else
+		*strategy = 0;
+	if (!ft_strcmp(*av, "--bench") || !ft_strcmp(av[1], "--bench"))
+		*bench = BENCH;
+	else
+		*bench = 0;
+	if (*strategy)
+		offset++;
+	if (*bench)
+		offset++;
+	return (offset);
 }

@@ -15,29 +15,25 @@
 int main(int ac, char **av)
 {
 	t_stack *stack_a;
-	// t_stack *stack_b;
-	t_op_counter	*count;
+	int		strategy;
+	int		bench;
+	int		offset;
+	char	**args;
 
 	if (ac < 2)
 		return (ft_putstr_fd("Error\n", 1), 1);
-	if (validate_input(av + 1) == 0)
+	offset = check_for_flags(av + 1, &strategy, &bench);
+	if (ac == offset + 1)
+		args = ft_split(av[offset], ' ');
+	else
+		args = av + offset;
+	if (validate_input(args, ac - (offset + 1)) == 0)
 		return (1);
 	stack_a = NULL;
-	stack_a = init_stack_a(stack_a, av + 1);
-	count = malloc(sizeof(t_op_counter *));
-	if (!count)
-		return (1);
-	count->sa = 0;
-	count->ra = 0;
-	count->total = 0;
-	// ft_putstr_fd("\nStack a:\n", 1);
-	// print_stack(stack_a);
-	// printf("In order: %d, stacklen: %d", in_order(stack_a), stack_len(stack_a));
-	bubble_sort(&stack_a, count);
-	// print_stack(stack_a);
-	// ft_putstr_fd("\nStack b:\n", 1);
-	// print_stack(stack_b);
+	stack_a = init_stack_a(stack_a, args);
+	print_stack(stack_a);
 	free_stack(stack_a);
-	// free_stack(stack_b);
+	if (ac == offset + 1)
+		free_arr(args);
 	return (0);
 }
