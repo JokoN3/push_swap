@@ -42,6 +42,7 @@ typedef struct s_operation_counter
 	int	rra;
 	int	rrb;
 	int	rrr;
+	int	total;
 }	t_op_counter;
 
 void	free_stack(t_stack *stack);
@@ -49,6 +50,8 @@ void	free_arr(char **arr);
 void	print_stack(t_stack *stack);
 t_stack	*last_el(t_stack *stack);
 t_stack	*prev_el(t_stack *stack, t_stack *element);
+int		stack_len(t_stack *stack);
+int		in_order(t_stack *stack);
 
 t_stack	*init_stack_a(t_stack *stack_a, char **av);
 t_stack	*add_new_node(void);
@@ -58,6 +61,8 @@ void	swap(t_stack **a);
 void	push(t_stack **a, t_stack **b);
 void	rotate(t_stack **a);
 void	rev_rotate(t_stack **a);
+
+void	bubble_sort(t_stack **a, t_op_counter *count);
 
 int		validate_input(char **av, int allocated_av);
 int		check_dup(char **av);
