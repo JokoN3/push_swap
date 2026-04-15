@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 NAME = push_swap
 
@@ -7,7 +7,7 @@ LIBFTDIR = libft
 LIBFT = $(LIBFTDIR)/libft.a
 
 SRCS = main.c parsing.c operations.c operations_utils.c \
-		validation.c
+		validation.c parsing_utils.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
