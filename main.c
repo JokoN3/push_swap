@@ -6,27 +6,12 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/10 12:51:18 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/04/15 16:58:50 by yoneshev      ########   odam.nl         */
+/*   Updated: 2026/04/15 18:00:29 by yoneshev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	init_counter(t_op_counter *count)
-{
-	count->sa = 0;
-	count->sb = 0;
-	count->ss = 0;
-	count->pa = 0;
-	count->pb = 0;
-	count->ra = 0;
-	count->rb = 0;
-	count->rr = 0;
-	count->rra = 0;
-	count->rrb = 0;
-	count->rrr = 0;
-	count->total = 0;
-}
 
 void	run_algorithm(t_stack **stack_a, int strategy, int bench)
 {
@@ -37,6 +22,8 @@ void	run_algorithm(t_stack **stack_a, int strategy, int bench)
 	if (strategy == SIMPLE)
 		bubble_sort(stack_a, &count);
 	bubble_sort(stack_a, &count);
+	if (bench)
+		benchmark_mode(count, SIMPLE);
 }
 
 int main(int ac, char **av)
@@ -61,7 +48,7 @@ int main(int ac, char **av)
 	if (ac == offset + 1)
 		free_arr(args);
 	run_algorithm(&stack_a, strategy, bench);
-	print_stack(stack_a);
+	// print_stack(stack_a);
 	free_stack(stack_a);
 	return (0);
 }
