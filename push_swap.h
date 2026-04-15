@@ -6,7 +6,7 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/09 18:13:52 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/04/10 15:30:18 by yoneshev      ########   odam.nl         */
+/*   Updated: 2026/04/15 12:42:15 by lvan-win      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,14 @@ typedef struct s_operation_counter
 	int	rra;
 	int	rrb;
 	int	rrr;
+	int	total;
 }	t_op_counter;
 
 void	free_stack(t_stack *stack);
 void	print_stack(t_stack *stack);
 t_stack	*last_el(t_stack *stack);
 t_stack	*prev_el(t_stack *stack, t_stack *element);
+int		*stack_len(t_stack *stack);
 
 t_stack	*init_stack_a(t_stack *stack_a, char **av);
 t_stack	*add_new_node(void);
