@@ -6,7 +6,7 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/09 18:13:52 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/04/15 16:54:49 by yoneshev      ########   odam.nl         */
+/*   Updated: 2026/04/15 18:01:09 by yoneshev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,9 @@ int		validate_input(char **av, int allocated_av);
 int		check_dup(char **av);
 int		check_int(char **av);
 int		non_num_in_str(char *str);
+
+void	benchmark_mode(t_op_counter count, int strategy);
+void	init_counter(t_op_counter *count);
+void	print_ops(t_op_counter count);
 
 #endif
