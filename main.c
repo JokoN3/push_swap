@@ -6,7 +6,7 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/10 12:51:18 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/04/17 12:30:05 by yoneshev      ########   odam.nl         */
+/*   Updated: 2026/04/17 14:22:18 by lvan-win      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	run_algorithm(t_stack **stack_a, int strategy, int bench)
 
 	(void)bench;
 	init_counter(&count);
+	count.disorder = compute_disorder(*stack_a);
 	if (strategy == SIMPLE)
 		bubble_sort(stack_a, &count);
 	bubble_sort(stack_a, &count);

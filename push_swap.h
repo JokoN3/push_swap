@@ -6,7 +6,7 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/09 18:13:52 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/04/15 18:01:09 by yoneshev      ########   odam.nl         */
+/*   Updated: 2026/04/17 14:23:56 by lvan-win      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,19 @@ typedef struct s_stack
 
 typedef struct s_operation_counter
 {
-	int	sa;
-	int	sb;
-	int	ss;
-	int	pa;
-	int	pb;
-	int	ra;
-	int	rb;
-	int	rr;
-	int	rra;
-	int	rrb;
-	int	rrr;
-	int	total;
+	float	disorder;
+	int		sa;
+	int		sb;
+	int		ss;
+	int		pa;
+	int		pb;
+	int		ra;
+	int		rb;
+	int		rr;
+	int		rra;
+	int		rrb;
+	int		rrr;
+	int		total;
 }	t_op_counter;
 
 void	free_stack(t_stack *stack);
@@ -72,5 +73,8 @@ int		non_num_in_str(char *str);
 void	benchmark_mode(t_op_counter count, int strategy);
 void	init_counter(t_op_counter *count);
 void	print_ops(t_op_counter count);
+
+float	compute_disorder(t_stack *a);
+void 	put_disorder(float disorder, int fd);
 
 #endif

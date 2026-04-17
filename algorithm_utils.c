@@ -1,41 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   bubble_sort.c                                      :+:    :+:            */
+/*   algorithm_utils.c                                  :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lvan-win <lvan-win@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2026/04/10 15:32:10 by lvan-win      #+#    #+#                 */
-/*   Updated: 2026/04/17 12:36:56 by lvan-win      ########   odam.nl         */
+/*   Created: 2026/04/15 16:24:21 by lvan-win      #+#    #+#                 */
+/*   Updated: 2026/04/15 16:24:44 by lvan-win      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	bubble_sort(t_stack **a, t_op_counter *count)
+int	in_order(t_stack *stack)
 {
-	int	i;
-
-	while (!in_order(*a))
+	while (stack && stack->next)
 	{
-		i = 1;
-		while (i < stack_len(*a))
-		{
-			if ((*a)->num > (*a)->next->num)
-			{
-				swap(a);
-				count->sa++;
-				write(1, "sa\n", 3);
-			}
-			if (in_order(*a))
-				return ;
-			rotate(a);
-			count->ra++;
-			write(1, "ra\n", 3);
-			i++;
-		}
-		rotate(a);
-		count->ra++;
-		write(1, "ra\n", 3);
+		if (stack->num > stack->next->num)
+			return (0);
+		stack = stack->next;
 	}
+	return (1);
 }
