@@ -6,7 +6,7 @@
 /*   By: lvan-win <lvan-win@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/09 19:09:44 by lvan-win      #+#    #+#                 */
-/*   Updated: 2026/04/10 12:55:02 by lvan-win      ########   odam.nl         */
+/*   Updated: 2026/04/17 13:14:24 by yoneshev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,20 +28,20 @@ void	swap(t_stack **a)
 	*a = second;
 }
 
-void	push(t_stack **a, t_stack **b)
+void	push(t_stack **to, t_stack **from)
 {
-	t_stack	*a_first;
-	t_stack	*b_first;
-	t_stack	*b_second;
+	t_stack	*to_first;
+	t_stack	*from_first;
+	t_stack	*from_second;
 	
-	if (!a || !b || !*b)
+	if (!to || !from || !*from)
 		return ;
-	a_first = *a;
-	b_first = *b;
-	b_second = b_first->next;
-	*b = b_second;
-	b_first->next = a_first;
-	*a = b_first;
+	to_first = *to;
+	from_first = *from;
+	from_second = from_first->next;
+	*from = from_second;
+	from_first->next = to_first;
+	*to = from_first;
 }
 
 void	rotate(t_stack **a)

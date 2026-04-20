@@ -6,7 +6,7 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/09 18:13:52 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/04/15 18:01:09 by yoneshev      ########   odam.nl         */
+/*   Updated: 2026/04/20 18:19:57 by yoneshev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 
 typedef struct s_stack
 {
+	int				index;
 	int				num;
 	struct s_stack	*next;
 }	t_stack;
@@ -58,16 +59,18 @@ t_stack	*add_new_node(void);
 int		check_for_flags(char **av, int *strategy, int *bench);
 
 void	swap(t_stack **a);
-void	push(t_stack **a, t_stack **b);
+void	push(t_stack **to, t_stack **from);
 void	rotate(t_stack **a);
 void	rev_rotate(t_stack **a);
 
 void	bubble_sort(t_stack **a, t_op_counter *count);
+int		index_stack(t_stack **stack_a);
 
 int		validate_input(char **av, int allocated_av);
 int		check_dup(char **av);
 int		check_int(char **av);
 int		non_num_in_str(char *str);
+int		stack_size(t_stack *stack);
 
 void	benchmark_mode(t_op_counter count, int strategy);
 void	init_counter(t_op_counter *count);
