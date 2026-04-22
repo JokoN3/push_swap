@@ -6,7 +6,7 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/10 12:51:18 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/04/20 18:43:21 by yoneshev      ########   odam.nl         */
+/*   Updated: 2026/04/22 17:35:43 by lvan-win      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int main(int ac, char **av)
 	if (ac == offset + 1)
 		free_arr(args);
 	index_stack(&stack_a);
+	printf("%d\n", in_order_circ(stack_a));//
 	// run_algorithm(&stack_a, strategy, bench);
 	print_stack(stack_a);
 	// print_stack(stack_b);
