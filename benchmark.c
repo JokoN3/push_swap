@@ -6,7 +6,7 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/15 18:00:02 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/04/17 14:31:42 by lvan-win      ########   odam.nl         */
+/*   Updated: 2026/04/22 19:06:48 by lvan-win      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,9 @@ void	benchmark_mode(t_op_counter count, int strategy)
 	if (strategy == SIMPLE)
 		ft_putstr_fd("[bench] strategy: Bubble sort / O(n^2)\n", 2); // fix this
 	ft_putstr_fd("[bench] total_ops: ", 2);
+	count.total = count.sa + count.sb + count.ss
+	+ count.pa + count.pb + count.ra + count.rb
+	+ count.rr + count.rra + count.rrb + count.rrr;
 	ft_putnbr_fd(count.total, 2);
 	ft_putstr_fd("\n", 2);
 	print_ops(count);
