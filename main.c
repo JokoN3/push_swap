@@ -19,6 +19,7 @@ void	run_algorithm(t_stack **stack_a, int strategy, int bench)
 
 	(void)bench;
 	init_counter(&count);
+	count.disorder = compute_disorder(*stack_a);
 	if (strategy == SIMPLE)
 		bubble_sort(stack_a, &count);
 	bubble_sort(stack_a, &count);
