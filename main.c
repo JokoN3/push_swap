@@ -6,7 +6,7 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/10 12:51:18 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/04/22 17:35:43 by lvan-win      ########   odam.nl         */
+/*   Updated: 2026/04/22 19:05:51 by lvan-win      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	run_algorithm(t_stack **stack_a, int strategy, int bench)
 	count.disorder = compute_disorder(*stack_a);
 	if (strategy == SIMPLE)
 		bubble_sort(stack_a, &count);
-	bubble_sort(stack_a, &count);
+	cocktail_sort(stack_a, &count);
 	if (bench)
 		benchmark_mode(count, SIMPLE);
 }
@@ -50,9 +50,8 @@ int main(int ac, char **av)
 	if (ac == offset + 1)
 		free_arr(args);
 	index_stack(&stack_a);
-	printf("%d\n", in_order_circ(stack_a));//
-	// run_algorithm(&stack_a, strategy, bench);
-	print_stack(stack_a);
+	run_algorithm(&stack_a, strategy, bench);
+	// print_stack(stack_a);
 	// print_stack(stack_b);
 	free_stack(stack_a);
 	return (0);

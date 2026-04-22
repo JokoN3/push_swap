@@ -6,7 +6,7 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/09 18:13:52 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/04/22 17:27:24 by lvan-win      ########   odam.nl         */
+/*   Updated: 2026/04/22 19:16:02 by lvan-win      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ t_stack	*last_el(t_stack *stack);
 t_stack	*prev_el(t_stack *stack, t_stack *element);
 int		in_order(t_stack *stack);
 int		in_order_circ(t_stack *stack);
+int		check_circ_order(t_stack *stack, t_stack *current);
 
 t_stack	*init_stack_a(t_stack *stack_a, char **av);
 t_stack	*add_new_node(void);
@@ -64,7 +65,10 @@ void	push(t_stack **to, t_stack **from);
 void	rotate(t_stack **a);
 void	rev_rotate(t_stack **a);
 
+void	bubble_lr(t_stack **a, t_op_counter *count, int bound);
+void	bubble_rl(t_stack **a, t_op_counter *count, int bound);
 void	bubble_sort(t_stack **a, t_op_counter *count);
+void	cocktail_sort(t_stack **a, t_op_counter *count);
 int		index_stack(t_stack **stack_a);
 
 int		validate_input(char **av, int allocated_av);
