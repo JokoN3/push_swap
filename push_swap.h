@@ -6,7 +6,7 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/09 18:13:52 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/04/22 19:16:02 by lvan-win      ########   odam.nl         */
+/*   Updated: 2026/04/22 21:48:37 by lvan-win      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,9 @@
 
 typedef struct s_stack
 {
-	int				index;
 	int				num;
+	int				index;
+	int				bucket;
 	struct s_stack	*next;
 }	t_stack;
 
