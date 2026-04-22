@@ -6,7 +6,7 @@
 /*   By: lvan-win <lvan-win@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/10 12:27:27 by lvan-win      #+#    #+#                 */
-/*   Updated: 2026/04/15 14:23:50 by lvan-win      ########   odam.nl         */
+/*   Updated: 2026/04/22 14:55:31 by lvan-win      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,4 @@ t_stack	*prev_el(t_stack *stack, t_stack *element)
 	while (current->next && current->next != element)
 		current = current->next;
 	return (current);
-}
-
-int	stack_len(t_stack *stack)
-{
-	int		count;
-
-	count = 0;
-	while (stack)
-	{
-		count++;
-		stack = stack->next;
-	}
-	return (count);
 }
