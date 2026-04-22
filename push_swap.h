@@ -32,18 +32,19 @@ typedef struct s_stack
 
 typedef struct s_operation_counter
 {
-	int	sa;
-	int	sb;
-	int	ss;
-	int	pa;
-	int	pb;
-	int	ra;
-	int	rb;
-	int	rr;
-	int	rra;
-	int	rrb;
-	int	rrr;
-	int	total;
+	float	disorder;
+	int		sa;
+	int		sb;
+	int		ss;
+	int		pa;
+	int		pb;
+	int		ra;
+	int		rb;
+	int		rr;
+	int		rra;
+	int		rrb;
+	int		rrr;
+	int		total;
 }	t_op_counter;
 
 void	free_stack(t_stack *stack);
@@ -75,5 +76,8 @@ int		stack_size(t_stack *stack);
 void	benchmark_mode(t_op_counter count, int strategy);
 void	init_counter(t_op_counter *count);
 void	print_ops(t_op_counter count);
+
+float	compute_disorder(t_stack *a);
+void 	put_disorder(float disorder, int fd);
 
 #endif
