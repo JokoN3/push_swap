@@ -6,7 +6,7 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/10 12:51:18 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/04/20 18:52:04 by yoneshev      ########   odam.nl         */
+/*   Updated: 2026/04/26 16:19:24 by yoneshev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	run_algorithm(t_stack **stack_a, int strategy, int bench)
 int main(int ac, char **av)
 {
 	t_stack *stack_a;
-	// t_stack *stack_b = NULL;
+	t_stack *stack_b = NULL;
 	int		strategy;
 	int		bench;
 	int		offset;
@@ -52,8 +52,15 @@ int main(int ac, char **av)
 	if (!index_stack(&stack_a))
 		return (1);
 	// run_algorithm(&stack_a, strategy, bench);
-	// print_stack(stamck_a);
-	// print_stack(stack_b);
+	print_stack(stack_a);
+	quicksort_a(&stack_a, &stack_b, stack_size(stack_a));
+	// sort_three_on_top(&stack_a, &stack_b, 'b', 2);
+	// sort_three_in_a(&stack_a, &stack_b);
+	// sort_three_in_b(&stack_b, &stack_a);
+	printf("\n\n\n---------------------");
+	print_stack(stack_a);
+	printf("\n\n\n---------------------");
+	print_stack(stack_b);
 	free_stack(stack_a);
 	return (0);
 }
