@@ -6,13 +6,12 @@
 /*   By: lvan-win <lvan-win@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/15 16:24:21 by lvan-win      #+#    #+#                 */
-/*   Updated: 2026/04/22 19:14:27 by lvan-win      ########   odam.nl         */
+/*   Updated: 2026/04/26 13:35:57 by lvan-win      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-//remove in_order if we only use in_order_circ?
 int	in_order(t_stack *stack)
 {
 	while (stack && stack->next)

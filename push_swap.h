@@ -6,7 +6,7 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/09 18:13:52 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/04/22 19:16:02 by lvan-win      ########   odam.nl         */
+/*   Updated: 2026/04/26 16:20:48 by lvan-win      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 
 typedef struct s_stack
 {
-	int				index;
 	int				num;
+	int				index;
 	struct s_stack	*next;
 }	t_stack;
 
@@ -60,15 +60,35 @@ t_stack	*init_stack_a(t_stack *stack_a, char **av);
 t_stack	*add_new_node(void);
 int		check_for_flags(char **av, int *strategy, int *bench);
 
-void	swap(t_stack **a);
+void	swap(t_stack **stack);
 void	push(t_stack **to, t_stack **from);
-void	rotate(t_stack **a);
-void	rev_rotate(t_stack **a);
+void	rotate(t_stack **stack);
+void	rev_rotate(t_stack **stack);
+
+void	sa(t_stack **a, t_op_counter *count);
+void	sb(t_stack **b, t_op_counter *count);
+void	ss(t_stack **a, t_stack **b, t_op_counter *count);
+
+void	pa(t_stack **a, t_stack **b, t_op_counter *count);
+void	pb(t_stack **a, t_stack **b, t_op_counter *count);
+
+void	ra(t_stack **a, t_op_counter *count);
+void	rb(t_stack **b, t_op_counter *count);
+void	rr(t_stack **a, t_stack **b, t_op_counter *count);
+
+void	rra(t_stack **a, t_op_counter *count);
+void	rrb(t_stack **b, t_op_counter *count);
+void	rrr(t_stack **a, t_stack **b, t_op_counter *count);
 
 void	bubble_lr(t_stack **a, t_op_counter *count, int bound);
 void	bubble_rl(t_stack **a, t_op_counter *count, int bound);
 void	bubble_sort(t_stack **a, t_op_counter *count);
-void	cocktail_sort(t_stack **a, t_op_counter *count);
+void	rotate_to_start(t_stack **a, t_op_counter *count);
+void	cocktail_sort(t_stack **a, t_op_counter *count, int bound);
+
+int	square_root(int n);
+void	messy_room_sort(t_stack **a, t_stack **b, t_op_counter *count);
+
 int		index_stack(t_stack **stack_a);
 
 int		validate_input(char **av, int allocated_av);
@@ -82,6 +102,6 @@ void	init_counter(t_op_counter *count);
 void	print_ops(t_op_counter count);
 
 float	compute_disorder(t_stack *a);
-void 	put_disorder(float disorder, int fd);
+void 	print_disorder(float disorder, int fd);
 
 #endif
