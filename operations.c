@@ -6,26 +6,26 @@
 /*   By: lvan-win <lvan-win@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/09 19:09:44 by lvan-win      #+#    #+#                 */
-/*   Updated: 2026/04/17 13:14:24 by yoneshev      ########   odam.nl         */
+/*   Updated: 2026/04/26 15:46:43 by lvan-win      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap(t_stack **a)
+void	swap(t_stack **stack)
 {
 	t_stack	*first;
 	t_stack	*second;
 	t_stack	*third;
 
-	if (!a || !*a || !(*a)->next)
+	if (!stack || !*stack || !(*stack)->next)
 		return ;
-	first = *a;
+	first = *stack;
 	second = first->next;
 	third = second->next;
 	first->next = third;
 	second->next = first;
-	*a = second;
+	*stack = second;
 }
 
 void	push(t_stack **to, t_stack **from)
@@ -44,34 +44,34 @@ void	push(t_stack **to, t_stack **from)
 	*to = from_first;
 }
 
-void	rotate(t_stack **a)
+void	rotate(t_stack **stack)
 {
 	t_stack	*first;
 	t_stack *second;
 	t_stack	*last;
 	
-	if (!a || !*a || !(*a)->next)
+	if (!stack || !*stack || !(*stack)->next)
 		return ;
-	first = *a;
+	first = *stack;
 	second = first->next;
-	last = last_el(*a);
+	last = last_el(*stack);
 	last->next = first;
 	first->next = NULL;
-	*a = second;
+	*stack = second;
 }
 
-void	rev_rotate(t_stack **a)
+void	rev_rotate(t_stack **stack)
 {
 	t_stack	*first;
 	t_stack *second_to_last;
 	t_stack	*last;
 
-	if (!a || !*a || !(*a)->next)
+	if (!stack || !*stack || !(*stack)->next)
 		return ;
-	first = *a;
-	last = last_el(*a);
-	second_to_last = prev_el(*a, last);
+	first = *stack;
+	last = last_el(*stack);
+	second_to_last = prev_el(*stack, last);
 	last->next = first;
 	second_to_last->next = NULL;
-	*a = last;
+	*stack = last;
 }

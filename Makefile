@@ -8,8 +8,9 @@ LIBFT = $(LIBFTDIR)/libft.a
 
 SRCS = main.c parsing.c operations.c operations_utils.c \
 		validation.c bubble_sort.c parsing_utils.c \
-		benchmark.c index.c \
-		disorder.c algorithm_utils.c
+		benchmark.c index.c bucket_sort.c \
+		disorder.c algorithm_utils.c \
+		swap.c push.c rotate.c rev_rotate.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
