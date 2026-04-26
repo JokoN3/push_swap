@@ -6,25 +6,26 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/10 12:51:18 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/04/26 16:44:05 by lvan-win      ########   odam.nl         */
+/*   Updated: 2026/04/26 16:58:37 by yoneshev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 
-void	run_algorithm(t_stack **stack_a, int strategy, int bench)
+void	run_algorithm(t_stack **a, t_stack **b, int strategy, int bench)
 {
 	t_op_counter	count;
 	t_stack 		*stack_b = NULL;
 
 	(void)bench;
 	init_counter(&count);
-	count.disorder = compute_disorder(*stack_a);
+	count.disorder = compute_disorder(*a);
 	if (strategy == SIMPLE)
-		bubble_sort(stack_a, &count);
-	// cocktail_sort(stack_a, &count, stack_size(*stack_a));
-	messy_room_sort(stack_a, &stack_b, &count);
+		bubble_sort(a, &count);
+	if (strategy == COMPLEX)
+		quicksort_a(a, b, stack_size(*a));
+	bubble_sort(a, &count);
 	if (bench)
 		benchmark_mode(count, SIMPLE);
 }
@@ -32,7 +33,7 @@ void	run_algorithm(t_stack **stack_a, int strategy, int bench)
 int main(int ac, char **av)
 {
 	t_stack *stack_a;
-	// t_stack *stack_b = NULL;
+	t_stack *stack_b = NULL;
 	int		strategy;
 	int		bench;
 	int		offset;
@@ -51,10 +52,10 @@ int main(int ac, char **av)
 	stack_a = init_stack_a(stack_a, args);
 	if (ac == offset + 1)
 		free_arr(args);
-	index_stack(&stack_a);
-	run_algorithm(&stack_a, strategy, bench);
-	// print_stack(stack_a);
-	// print_stack(stack_b);
+	if (!index_stack(&stack_a))
+		return (1);
+	run_algorithm(&stack_a, &stack_b, strategy, bench);
+	print_stack(stack_a);
 	free_stack(stack_a);
 	return (0);
 }
