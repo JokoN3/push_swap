@@ -6,7 +6,7 @@
 /*   By: lvan-win <lvan-win@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/15 16:26:05 by lvan-win      #+#    #+#                 */
-/*   Updated: 2026/04/26 13:25:14 by lvan-win      ########   odam.nl         */
+/*   Updated: 2026/04/26 19:01:28 by lvan-win      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ float	compute_disorder(t_stack *a)
 	return ((float) mistakes / total_pairs);
 }
 
-void print_disorder(float disorder, int fd)
+void	print_disorder(float disorder, int fd)
 {
 	char	c;
 	int		next;
