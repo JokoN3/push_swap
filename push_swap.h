@@ -6,7 +6,7 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/09 18:13:52 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/04/26 16:49:02 by yoneshev      ########   odam.nl         */
+/*   Updated: 2026/04/26 18:12:31 by yoneshev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,20 +86,20 @@ void	bubble_sort(t_stack **a, t_op_counter *count);
 void	rotate_to_start(t_stack **a, t_op_counter *count);
 void	cocktail_sort(t_stack **a, t_op_counter *count, int bound);
 
-int	square_root(int n);
+int		square_root(int n);
 void	messy_room_sort(t_stack **a, t_stack **b, t_op_counter *count);
 
 int		index_stack(t_stack **stack_a);
-void	sort_three_in_a(t_stack **stack_a, t_stack **stack_b);
-void	sort_three_in_b(t_stack **stack_a, t_stack **stack_b);
-void	sort_three_on_top(t_stack **stack_a, t_stack **stack_b, char ab, int count);
+void	sort_three_in_a(t_stack **a, t_stack **b, t_op_counter *counter);
+void	sort_three_in_b(t_stack **a, t_stack **b, t_op_counter *counter);
+void	sort_three_on_top(t_stack **a, t_stack **b, char ab, int count, t_op_counter *counter);
 int		find_median(t_stack *stack, int count);
-void	quicksort_a(t_stack **stack_a, t_stack **stack_b, int count);
-void	quicksort_b(t_stack **stack_a, t_stack **stack_b, int count);
-void	rotate_b(t_stack **stack_b, int rotated);
-void	rotate_a(t_stack **stack_a, int rotated);
-void	run_operations_chain(t_stack **a, t_stack **b, char *operations);
-void	push_sorted_to_a(t_stack **stack_a, t_stack **stack_b, int count);
+void	quicksort_a(t_stack **a, t_stack **b, int count, t_op_counter *counter);
+void	quicksort_b(t_stack **a, t_stack **b, int count, t_op_counter *counter);
+void	rotate_b(t_stack **stack_b, int rotated, t_op_counter *counter);
+void	rotate_a(t_stack **a, int rotated, t_op_counter *counter);
+void	run_op_chain(t_stack **a, t_stack **b, char *ops, t_op_counter *counter);
+void	push_sorted_to_a(t_stack **a, t_stack **b, int count, t_op_counter *counter);
 
 int		validate_input(char **av, int allocated_av);
 int		check_dup(char **av);

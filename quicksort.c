@@ -6,90 +6,90 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/22 13:42:50 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/04/26 16:51:47 by yoneshev      ########   odam.nl         */
+/*   Updated: 2026/04/26 18:13:11 by yoneshev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_three_in_a(t_stack **stack_a, t_stack **stack_b)
+void	sort_three_in_a(t_stack **a, t_stack **b, t_op_counter *counter)
 {
 	t_stack	*n1;
 	t_stack	*n2;
 	t_stack	*n3;
 
-	n1 = *stack_a;
-	n2 = (*stack_a)->next;
-	n3 = (*stack_a)->next->next;
+	n1 = *a;
+	n2 = (*a)->next;
+	n3 = (*a)->next->next;
 	if (n1->index < n2->index && n1->index < n2->index && n2->index < n3->index)
 		return ;
 	if (n1->index < n2->index && n1->index < n3->index)
-		run_operations_chain(stack_a, stack_b, "pbsapa");
+		run_op_chain(a, b, "pbsapa", counter);
 	else if (n1->index > n2->index && n1->index > n3->index)
 	{
 		if (n2->index > n3->index)
-			run_operations_chain(stack_a, stack_b, "sapbsapasa");
+			run_op_chain(a, b, "sapbsapasa", counter);
 		else
-			run_operations_chain(stack_a, stack_b, "sapbsapa");
+			run_op_chain(a, b, "sapbsapa", counter);
 	}
 	else if (n1->index > n2->index)
-		swap(stack_a);
+		sa(a, counter);
 	else
-		run_operations_chain(stack_a, stack_b, "pbsapasa");
+		run_op_chain(a, b, "pbsapasa", counter);
 }
 
-void	sort_three_in_b(t_stack **stack_a, t_stack **stack_b)
+void	sort_three_in_b(t_stack **a, t_stack **b, t_op_counter *counter)
 {
 	t_stack	*n1;
 	t_stack	*n2;
 	t_stack	*n3;
 
-	n1 = *stack_b;
-	n2 = (*stack_b)->next;
-	n3 = (*stack_b)->next->next;
+	n1 = *b;
+	n2 = (*b)->next;
+	n3 = (*b)->next->next;
 	if (n1->index > n2->index && n1->index > n2->index && n2->index > n3->index)
 		return ;
 	if (n1->index > n2->index && n1->index > n3->index)
-		run_operations_chain(stack_a, stack_b, "pasbpb");
+		run_op_chain(a, b, "pasbpb", counter);
 	else if (n1->index < n2->index && n1->index < n3->index)
 	{
 		if (n2->index < n3->index)
-			run_operations_chain(stack_a, stack_b, "sbpasbpbsb");
+			run_op_chain(a, b, "sbpasbpbsb", counter);
 		else
-			run_operations_chain(stack_a, stack_b, "sbpasbpb");
+			run_op_chain(a, b, "sbpasbpb", counter);
 	}
 	else if (n1->index < n2->index)
-		swap(stack_b);
+		sb(b, counter);
 	else
-		run_operations_chain(stack_a, stack_b, "pasbpbsb");
+		run_op_chain(a, b, "pasbpbsb", counter);
 }
 
-void	sort_three_on_top(t_stack **a, t_stack **b, char ab, int count)
+void	sort_three_on_top(t_stack **a, t_stack **b, char ab, int count, t_op_counter *counter)
 {
 	if (ab == 'a')
 	{
 		if (count < 3)
 		{
 			if ((*a)->index > (*a)->next->index)
-				swap(a);
+				sa(a, counter);
 		}
 		else
-			sort_three_in_a(a, b);
+			sort_three_in_a(a, b, counter);
 	}
 	else
 	{
 		if (count < 3)
 		{
 			if ((*b)->index < (*b)->next->index)
-				swap(b);
+				sb(b, counter);
 		}
 		else
-			sort_three_in_b(a, b);
-		push_sorted_to_a(a, b, count);
+			sort_three_in_b(a, b, counter);
+		push_sorted_to_a(a, b, count, counter);
 	}
 }
 
-void	quicksort_a(t_stack **stack_a, t_stack **stack_b, int count)
+void	quicksort_a(t_stack **a, t_stack **b, int count, t_op_counter *counter)
 {
 	int	median;
 	int	pushed;
@@ -98,27 +98,27 @@ void	quicksort_a(t_stack **stack_a, t_stack **stack_b, int count)
 	rotated = 0;
 	pushed = 0;
 	if (count <= 3)
-		return (sort_three_on_top(stack_a, stack_b, 'a', count));
-	median = find_median(*stack_a, count);
+		return (sort_three_on_top(a, b, 'a', count, counter));
+	median = find_median(*a, count);
 	while (count--)
 	{
-		if ((*stack_a)->index < median)
+		if ((*a)->index < median)
 		{
-			push(stack_b, stack_a);
+			pb(a, b, counter);
 			pushed++;
 		}
 		else
 		{
-			rotate(stack_a);
+			ra(a, counter);
 			rotated++;
 		}
 	}
-	rotate_a(stack_a, rotated);
-	quicksort_a(stack_a, stack_b, rotated);
-	quicksort_b(stack_a, stack_b, pushed);
+	rotate_a(a, rotated, counter);
+	quicksort_a(a, b, rotated, counter);
+	quicksort_b(a, b, pushed, counter);
 }
 
-void	quicksort_b(t_stack **stack_a, t_stack **stack_b, int count)
+void	quicksort_b(t_stack **a, t_stack **b, int count, t_op_counter *counter)
 {
 	int	median;
 	int	pushed;
@@ -127,22 +127,22 @@ void	quicksort_b(t_stack **stack_a, t_stack **stack_b, int count)
 	pushed = 0;
 	rotated = 0;
 	if (count <= 3)
-		return (sort_three_on_top(stack_a, stack_b, 'b', count));
-	median = find_median(*stack_b, count);
+		return (sort_three_on_top(a, b, 'b', count, counter));
+	median = find_median(*b, count);
 	while (count--)
 	{
-		if ((*stack_b)->index > median)
+		if ((*b)->index > median)
 		{
-			push(stack_a, stack_b);
+			pa(a, b, counter);
 			pushed++;
 		}
 		else
 		{
-			rotate(stack_b);
+			rb(b, counter);
 			rotated++;
 		}
 	}
-	rotate_b(stack_b, rotated);
-	quicksort_a(stack_a, stack_b, pushed);
-	quicksort_b(stack_a, stack_b, rotated);
+	rotate_b(b, rotated, counter);
+	quicksort_a(a, b, pushed, counter);
+	quicksort_b(a, b, rotated, counter);
 }
