@@ -1,37 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   operations_utils.c                                 :+:    :+:            */
+/*   rev_rotate.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lvan-win <lvan-win@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2026/04/10 12:27:27 by lvan-win      #+#    #+#                 */
-/*   Updated: 2026/04/22 14:55:31 by lvan-win      ########   odam.nl         */
+/*   Created: 2026/04/26 15:33:00 by lvan-win      #+#    #+#                 */
+/*   Updated: 2026/04/26 15:34:30 by lvan-win      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*last_el(t_stack *stack)
+void	rra(t_stack **a, t_op_counter *count)
 {
-	t_stack	*current;
-
-	if (!stack)
-		return (NULL);
-	current = stack;
-	while (current->next)
-		current = current->next;
-	return (current);
+	rev_rotate(a);
+	count->rra++;
+	write(1, "rra\n", 4);
 }
 
-t_stack	*prev_el(t_stack *stack, t_stack *element)
+void	rrb(t_stack **b, t_op_counter *count)
 {
-	t_stack	*current;
+	rev_rotate(b);
+	count->rrb++;
+	write(1, "rrb\n", 4);
+}
 
-	if (!stack || !element)
-		return (NULL);
-	current = stack;
-	while (current->next && current->next != element)
-		current = current->next;
-	return (current);
+void	rrr(t_stack **a, t_stack **b, t_op_counter *count)
+{
+	rev_rotate(a);
+	rev_rotate(b);
+	count->rrr++;
+	write(1, "rrr\n", 4);
 }

@@ -1,37 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   operations_utils.c                                 :+:    :+:            */
+/*   swap.c                                             :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lvan-win <lvan-win@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2026/04/10 12:27:27 by lvan-win      #+#    #+#                 */
-/*   Updated: 2026/04/22 14:55:31 by lvan-win      ########   odam.nl         */
+/*   Created: 2026/04/26 15:07:24 by lvan-win      #+#    #+#                 */
+/*   Updated: 2026/04/26 15:12:50 by lvan-win      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*last_el(t_stack *stack)
+void	sa(t_stack **a, t_op_counter *count)
 {
-	t_stack	*current;
-
-	if (!stack)
-		return (NULL);
-	current = stack;
-	while (current->next)
-		current = current->next;
-	return (current);
+	swap(a);
+	count->sa++;
+	write(1, "sa\n", 3);
 }
 
-t_stack	*prev_el(t_stack *stack, t_stack *element)
+void	sb(t_stack **b, t_op_counter *count)
 {
-	t_stack	*current;
+	swap(b);
+	count->sb++;
+	write(1, "sb\n", 3);
+}
 
-	if (!stack || !element)
-		return (NULL);
-	current = stack;
-	while (current->next && current->next != element)
-		current = current->next;
-	return (current);
+void	ss(t_stack **a, t_stack **b, t_op_counter *count)
+{
+	swap(a);
+	swap(b);
+	count->ss++;
+	write(1, "ss\n", 3);
 }

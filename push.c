@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   operations_utils.c                                 :+:    :+:            */
+/*   push.c                                             :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lvan-win <lvan-win@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2026/04/10 12:27:27 by lvan-win      #+#    #+#                 */
-/*   Updated: 2026/04/22 14:55:31 by lvan-win      ########   odam.nl         */
+/*   Created: 2026/04/26 15:16:57 by lvan-win      #+#    #+#                 */
+/*   Updated: 2026/04/26 15:28:22 by lvan-win      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*last_el(t_stack *stack)
+void	pa(t_stack **a, t_stack **b, t_op_counter *count)
 {
-	t_stack	*current;
-
-	if (!stack)
-		return (NULL);
-	current = stack;
-	while (current->next)
-		current = current->next;
-	return (current);
+	push(a, b);
+	count->pa++;
+	write(1, "pa\n", 3);
 }
 
-t_stack	*prev_el(t_stack *stack, t_stack *element)
+void	pb(t_stack **a, t_stack **b, t_op_counter *count)
 {
-	t_stack	*current;
-
-	if (!stack || !element)
-		return (NULL);
-	current = stack;
-	while (current->next && current->next != element)
-		current = current->next;
-	return (current);
+	push(b, a);
+	count->pb++;
+	write(1, "pb\n", 3);
 }

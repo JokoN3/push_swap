@@ -16,6 +16,7 @@
 void	run_algorithm(t_stack **a, t_stack **b, int strategy, int bench)
 {
 	t_op_counter	count;
+	t_stack 		*stack_b = NULL;
 
 	(void)bench;
 	init_counter(&count);
