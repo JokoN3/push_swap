@@ -6,7 +6,7 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/10 12:51:18 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/04/26 16:58:37 by yoneshev      ########   odam.nl         */
+/*   Updated: 2026/04/26 17:09:20 by yoneshev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 void	run_algorithm(t_stack **a, t_stack **b, int strategy, int bench)
 {
 	t_op_counter	count;
-	t_stack 		*stack_b = NULL;
 
 	(void)bench;
 	init_counter(&count);
