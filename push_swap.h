@@ -6,7 +6,7 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/09 18:13:52 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/04/26 15:12:02 by yoneshev      ########   odam.nl         */
+/*   Updated: 2026/04/26 16:49:02 by yoneshev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,10 @@ void	sort_three_on_top(t_stack **stack_a, t_stack **stack_b, char ab, int count)
 int		find_median(t_stack *stack, int count);
 void	quicksort_a(t_stack **stack_a, t_stack **stack_b, int count);
 void	quicksort_b(t_stack **stack_a, t_stack **stack_b, int count);
+void	rotate_b(t_stack **stack_b, int rotated);
+void	rotate_a(t_stack **stack_a, int rotated);
+void	run_operations_chain(t_stack **a, t_stack **b, char *operations);
+void	push_sorted_to_a(t_stack **stack_a, t_stack **stack_b, int count);
 
 int		validate_input(char **av, int allocated_av);
 int		check_dup(char **av);
