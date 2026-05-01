@@ -6,7 +6,7 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/10 12:17:22 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/05/01 16:04:24 by yoneshev      ########   odam.nl         */
+/*   Updated: 2026/05/08 16:04:36 by lvan-win      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	check_for_flags(char **av, int *strategy, int *bench)
 	else if (!ft_strcmp(*av, "--complex") || !ft_strcmp(av[1], "--complex"))
 		*strategy = COMPLEX;
 	else
-		*strategy = 0;
+		*strategy = ADAPTIVE;
 	if (!ft_strcmp(*av, "--bench") || !ft_strcmp(av[1], "--bench"))
 		*bench = BENCH;
 	else
