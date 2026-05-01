@@ -6,13 +6,13 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/20 18:00:08 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/04/20 18:46:39 by yoneshev      ########   odam.nl         */
+/*   Updated: 2026/04/20 18:50:03 by yoneshev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	*fill_array(t_stack *stack)
+static int	*fill_array(t_stack *stack)
 {
 	int	i;
 	int	*arr;
@@ -30,7 +30,7 @@ int	*fill_array(t_stack *stack)
 	return (arr);
 }
 
-int	*index_bubble(int *arr, int size)
+static int	*index_bubble(int *arr, int size)
 {
 	int	i;
 	int	j;
