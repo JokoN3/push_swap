@@ -6,7 +6,7 @@
 /*   By: lvan-win <lvan-win@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/15 16:24:21 by lvan-win      #+#    #+#                 */
-/*   Updated: 2026/04/26 18:09:06 by lvan-win      ########   odam.nl         */
+/*   Updated: 2026/05/01 13:37:06 by lvan-win      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	check_circ_order(t_stack *stack, t_stack *current)
 		if (!current->next)
 		{
 			if (current->num > stack->num)
-					return (0);
+				return (0);
 			current = stack;
 		}
 		else

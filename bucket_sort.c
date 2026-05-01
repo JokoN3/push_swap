@@ -6,7 +6,7 @@
 /*   By: lvan-win <lvan-win@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/22 21:44:00 by lvan-win      #+#    #+#                 */
-/*   Updated: 2026/04/26 19:17:43 by lvan-win      ########   odam.nl         */
+/*   Updated: 2026/05/01 13:37:33 by lvan-win      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,11 @@ int	square_root(int n)
 	return (i);
 }
 
-void	messy_room_sort(t_stack **a, t_stack **b, t_op_counter *count)
+void	buckets_to_b(t_stack **a, t_stack **b, t_op_counter *count, int sqrt_n)
 {
-	int	sqrt_n;
 	int	bucket;
 	int	i;
 
-	if (in_order(*a))
-		return ;
-	sqrt_n = square_root(stack_size(*a));
 	bucket = 0;
 	while (stack_size(*a) > sqrt_n)
 	{
@@ -50,7 +46,12 @@ void	messy_room_sort(t_stack **a, t_stack **b, t_op_counter *count)
 		}
 		bucket++;
 	}
-	cocktail_sort(a, count, stack_size(*a));
+}
+
+void	back_and_sort(t_stack **a, t_stack **b, t_op_counter *count, int sqrt_n)
+{
+	int	i;
+
 	while (stack_size(*b) > 0)
 	{
 		i = 0;
@@ -63,56 +64,14 @@ void	messy_room_sort(t_stack **a, t_stack **b, t_op_counter *count)
 	}
 }
 
-// void	push_buckets_to_b(t_stack **a, t_stack **b, t_op_counter *count)
-// {
-// 	int	sqrt_n;
-// 	int	bucket;
-// 	int	i;
+void	messy_room_sort(t_stack **a, t_stack **b, t_op_counter *count)
+{
+	int	sqrt_n;
 
-// 	sqrt_n = square_root(stack_size(*a));
-// 	bucket = 0;
-// 	while (stack_size(*a) > sqrt_n)
-// 	{
-// 		i = 0;
-// 		while (i < sqrt_n)
-// 		{
-// 			if ((*a)->index < (bucket + 1) * sqrt_n)
-// 			{
-// 				pb(a, b, count);
-// 				i++;
-// 			}
-// 			else if (i < sqrt_n)
-// 			{
-// 				ra(a, count);
-// 			}
-// 		}
-// 		bucket++;
-// 	}
-// }
-
-// void	push_back_and_sort(t_stack **a, t_stack **b, t_op_counter *count)
-// {
-// 	int	sqrt_n;
-// 	int	i;
-
-// 	sqrt_n = square_root(stack_size(*a));
-// 	while (stack_size(*b) > 0)
-// 	{
-// 		i = 0;
-// 		while (i < sqrt_n)
-// 		{
-// 			pa(a, b, count);
-// 			i++;
-// 		}
-// 		cocktail_sort(a, count, sqrt_n);
-// 	}
-// }
-
-// void	messy_room_sort(t_stack **a, t_stack **b, t_op_counter *count)
-// {
-// 	if (in_order(*a))
-// 		return ;
-// 	push_buckets_to_b(a, b, count);
-// 	cocktail_sort(a, count, stack_size(*a));
-// 	push_back_and_sort(a, b, count);
-// }
+	if (in_order(*a))
+		return ;
+	sqrt_n = square_root(stack_size(*a));
+	buckets_to_b(a, b, count, sqrt_n);
+	cocktail_sort(a, count, stack_size(*a));
+	back_and_sort(a, b, count, sqrt_n);
+}
