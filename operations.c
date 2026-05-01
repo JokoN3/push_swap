@@ -6,7 +6,7 @@
 /*   By: lvan-win <lvan-win@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/09 19:09:44 by lvan-win      #+#    #+#                 */
-/*   Updated: 2026/04/26 15:46:43 by lvan-win      ########   odam.nl         */
+/*   Updated: 2026/05/01 13:31:04 by lvan-win      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	push(t_stack **to, t_stack **from)
 	t_stack	*to_first;
 	t_stack	*from_first;
 	t_stack	*from_second;
-	
+
 	if (!to || !from || !*from)
 		return ;
 	to_first = *to;
@@ -47,9 +47,9 @@ void	push(t_stack **to, t_stack **from)
 void	rotate(t_stack **stack)
 {
 	t_stack	*first;
-	t_stack *second;
+	t_stack	*second;
 	t_stack	*last;
-	
+
 	if (!stack || !*stack || !(*stack)->next)
 		return ;
 	first = *stack;
@@ -63,7 +63,7 @@ void	rotate(t_stack **stack)
 void	rev_rotate(t_stack **stack)
 {
 	t_stack	*first;
-	t_stack *second_to_last;
+	t_stack	*second_to_last;
 	t_stack	*last;
 
 	if (!stack || !*stack || !(*stack)->next)

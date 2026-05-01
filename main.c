@@ -6,7 +6,7 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/10 12:51:18 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/04/26 17:09:20 by yoneshev      ########   odam.nl         */
+/*   Updated: 2026/05/01 13:28:54 by lvan-win      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	run_algorithm(t_stack **a, t_stack **b, int strategy, int bench)
 		bubble_sort(a, &count);
 	if (strategy == COMPLEX)
 		quicksort_a(a, b, stack_size(*a));
-	bubble_sort(a, &count);
+	messy_room_sort(a, b, &count);
 	if (bench)
 		benchmark_mode(count, SIMPLE);
 }
@@ -54,7 +54,7 @@ int main(int ac, char **av)
 	if (!index_stack(&stack_a))
 		return (1);
 	run_algorithm(&stack_a, &stack_b, strategy, bench);
-	print_stack(stack_a);
+	// print_stack(stack_a);
 	free_stack(stack_a);
 	return (0);
 }

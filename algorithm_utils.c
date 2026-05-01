@@ -6,7 +6,7 @@
 /*   By: lvan-win <lvan-win@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/15 16:24:21 by lvan-win      #+#    #+#                 */
-/*   Updated: 2026/04/26 13:35:57 by lvan-win      ########   odam.nl         */
+/*   Updated: 2026/05/01 13:37:06 by lvan-win      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,20 @@ int	in_order(t_stack *stack)
 	return (1);
 }
 
+int	smallest_index(t_stack *stack)
+{
+	int	smallest;
+
+	smallest = stack->index;
+	while (stack)
+	{
+		if (stack->index < smallest)
+			smallest = stack->index;
+		stack = stack->next;
+	}
+	return (smallest);
+}
+
 int	check_circ_order(t_stack *stack, t_stack *current)
 {
 	int	i;
@@ -33,7 +47,7 @@ int	check_circ_order(t_stack *stack, t_stack *current)
 		if (!current->next)
 		{
 			if (current->num > stack->num)
-					return (0);
+				return (0);
 			current = stack;
 		}
 		else
@@ -54,7 +68,7 @@ int	in_order_circ(t_stack *stack)
 
 	begin = 0;
 	current = stack;
-	while (current->index != 0)
+	while (current->index != smallest_index(stack))
 	{
 		begin++;
 		current = current->next;
