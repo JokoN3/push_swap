@@ -6,7 +6,7 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/09 18:13:52 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/04/26 18:12:31 by yoneshev      ########   odam.nl         */
+/*   Updated: 2026/05/01 16:17:03 by yoneshev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,11 @@ void	rotate_b(t_stack **stack_b, int rotated, t_op_counter *counter);
 void	rotate_a(t_stack **a, int rotated, t_op_counter *counter);
 void	run_op_chain(t_stack **a, t_stack **b, char *ops, t_op_counter *counter);
 void	push_sorted_to_a(t_stack **a, t_stack **b, int count, t_op_counter *counter);
+
+void	three_way_quick_a(t_stack **a, t_stack **b, int count, t_op_counter *counter);
+
+void	sort_top_in_a(t_stack **a, t_stack **b, int count, t_op_counter *counter);
+void	sort_top_in_b(t_stack **a, t_stack **b, int count, t_op_counter *counter);
 
 int		validate_input(char **av, int allocated_av);
 int		check_dup(char **av);
