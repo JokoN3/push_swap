@@ -6,7 +6,7 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/22 13:42:50 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/05/01 21:20:21 by yoneshev      ########   odam.nl         */
+/*   Updated: 2026/05/07 20:10:54 by yoneshev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,32 +38,6 @@ void	sort_three_in_a(t_stack **a, t_stack **b, t_op_counter *counter)
 		run_op_chain(a, b, "pbsapasa", counter);
 }
 
-void	sort_three_in_b(t_stack **a, t_stack **b, t_op_counter *counter)
-{
-	t_stack	*n1;
-	t_stack	*n2;
-	t_stack	*n3;
-
-	n1 = *b;
-	n2 = (*b)->next;
-	n3 = (*b)->next->next;
-	if (n1->index > n2->index && n1->index > n2->index && n2->index > n3->index)
-		return ;
-	if (n1->index > n2->index && n1->index > n3->index)
-		run_op_chain(a, b, "pasbpb", counter);
-	else if (n1->index < n2->index && n1->index < n3->index)
-	{
-		if (n2->index < n3->index)
-			run_op_chain(a, b, "sbpasbpbsb", counter);
-		else
-			run_op_chain(a, b, "sbpasbpb", counter);
-	}
-	else if (n1->index < n2->index)
-		sb(b, counter);
-	else
-		run_op_chain(a, b, "pasbpbsb", counter);
-}
-
 // void	sort_three_in_b(t_stack **a, t_stack **b, t_op_counter *counter)
 // {
 // 	t_stack	*n1;
@@ -73,23 +47,49 @@ void	sort_three_in_b(t_stack **a, t_stack **b, t_op_counter *counter)
 // 	n1 = *b;
 // 	n2 = (*b)->next;
 // 	n3 = (*b)->next->next;
-// 	if (n1->index > n2->index && n1->index > n2->index && n2->index > n3->index) // 3 2 1
-// 		run_op_chain(a, b, "papapa", counter);
-// 	else if (n1->index > n2->index && n1->index > n3->index) // 3 1 2
-// 		run_op_chain(a, b, "pasbpapa", counter);
-// 	else if (n1->index < n2->index && n1->index < n3->index) //1 x x
+// 	if (n1->index > n2->index && n1->index > n2->index && n2->index > n3->index)
+// 		return ;
+// 	if (n1->index > n2->index && n1->index > n3->index)
+// 		run_op_chain(a, b, "pasbpb", counter);
+// 	else if (n1->index < n2->index && n1->index < n3->index)
 // 	{
-// 		if (n2->index < n3->index) //1 2 3
-// 			run_op_chain(a, b, "sbpasbpasapa", counter);
-// 		else // 1 3 2
-// 			run_op_chain(a, b, "sbpasbpapa", counter);
+// 		if (n2->index < n3->index)
+// 			run_op_chain(a, b, "sbpasbpbsb", counter);
+// 		else
+// 			run_op_chain(a, b, "sbpasbpb", counter);
 // 	}
-// 	else if (n1->index < n2->index) //2 1 3
-// 		run_op_chain(a, b, "pasbpasapa", counter);	
-// 	// sb(b, counter);
-// 	else // 2 3 1
-// 		run_op_chain(a, b, "sbpapapa", counter);
+// 	else if (n1->index < n2->index)
+// 		sb(b, counter);
+// 	else
+// 		run_op_chain(a, b, "pasbpbsb", counter);
 // }
+
+void	sort_three_in_b(t_stack **a, t_stack **b, t_op_counter *counter)
+{
+	t_stack	*n1;
+	t_stack	*n2;
+	t_stack	*n3;
+
+	n1 = *b;
+	n2 = (*b)->next;
+	n3 = (*b)->next->next;
+	if (n1->index > n2->index && n1->index > n2->index && n2->index > n3->index) // 3 2 1
+		run_op_chain(a, b, "papapa", counter);
+	else if (n1->index > n2->index && n1->index > n3->index) // 3 1 2
+		run_op_chain(a, b, "pasbpapa", counter);
+	else if (n1->index < n2->index && n1->index < n3->index) //1 x x
+	{
+		if (n2->index < n3->index) //1 2 3
+			run_op_chain(a, b, "sbpasbpasapa", counter);
+		else // 1 3 2
+			run_op_chain(a, b, "sbpasbpapa", counter);
+	}
+	else if (n1->index > n2->index) //2 1 3
+		run_op_chain(a, b, "pasbpasapa", counter);	
+	// sb(b, counter);
+	else // 2 3 1
+		run_op_chain(a, b, "sbpapapa", counter);
+}
 
 void	sort_three_on_top(t_stack **a, t_stack **b, char ab, int count, t_op_counter *counter)
 {

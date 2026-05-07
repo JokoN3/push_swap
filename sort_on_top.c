@@ -6,7 +6,7 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/05/01 13:40:08 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/05/01 21:20:05 by yoneshev      ########   odam.nl         */
+/*   Updated: 2026/05/07 20:11:33 by yoneshev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,7 +192,7 @@ void	sort_four_in_b(t_stack **a, t_stack **b, t_op_counter *counter)
 	while (rotated--)
 		rrb(b, counter);
 	sort_three_in_b(a, b, counter);
-	push_sorted_to_a(a, b, 3, counter);
+	// push_sorted_to_a(a, b, 3, counter);
 }
 
 void	sort_top_in_b(t_stack **a, t_stack **b, int count, t_op_counter *counter)
@@ -208,7 +208,7 @@ void	sort_top_in_b(t_stack **a, t_stack **b, int count, t_op_counter *counter)
 	if (count == 3)
 	{
 		sort_three_in_b(a, b, counter);
-		push_sorted_to_a(a, b, count, counter);
+		// push_sorted_to_a(a, b, count, counter);
 	}
 	if (count == 4)
 		sort_four_in_b(a, b, counter);
