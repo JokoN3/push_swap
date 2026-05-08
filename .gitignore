@@ -1,0 +1,8 @@
+# Compiled Binaries
+push_swap
+checker_linux
+
+# Objects and Libraries
+*.o
+*.a
+libft/
