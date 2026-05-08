@@ -6,7 +6,7 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/22 13:42:50 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/05/07 20:10:54 by yoneshev      ########   odam.nl         */
+/*   Updated: 2026/05/08 13:33:18 by yoneshev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,32 +38,6 @@ void	sort_three_in_a(t_stack **a, t_stack **b, t_op_counter *counter)
 		run_op_chain(a, b, "pbsapasa", counter);
 }
 
-// void	sort_three_in_b(t_stack **a, t_stack **b, t_op_counter *counter)
-// {
-// 	t_stack	*n1;
-// 	t_stack	*n2;
-// 	t_stack	*n3;
-
-// 	n1 = *b;
-// 	n2 = (*b)->next;
-// 	n3 = (*b)->next->next;
-// 	if (n1->index > n2->index && n1->index > n2->index && n2->index > n3->index)
-// 		return ;
-// 	if (n1->index > n2->index && n1->index > n3->index)
-// 		run_op_chain(a, b, "pasbpb", counter);
-// 	else if (n1->index < n2->index && n1->index < n3->index)
-// 	{
-// 		if (n2->index < n3->index)
-// 			run_op_chain(a, b, "sbpasbpbsb", counter);
-// 		else
-// 			run_op_chain(a, b, "sbpasbpb", counter);
-// 	}
-// 	else if (n1->index < n2->index)
-// 		sb(b, counter);
-// 	else
-// 		run_op_chain(a, b, "pasbpbsb", counter);
-// }
-
 void	sort_three_in_b(t_stack **a, t_stack **b, t_op_counter *counter)
 {
 	t_stack	*n1;
@@ -91,31 +65,6 @@ void	sort_three_in_b(t_stack **a, t_stack **b, t_op_counter *counter)
 		run_op_chain(a, b, "sbpapapa", counter);
 }
 
-void	sort_three_on_top(t_stack **a, t_stack **b, char ab, int count, t_op_counter *counter)
-{
-	if (ab == 'a')
-	{
-		if (count < 3)
-		{
-			if ((*a)->index > (*a)->next->index)
-				sa(a, counter);
-		}
-		else
-			sort_three_in_a(a, b, counter);
-	}
-	else
-	{
-		if (count < 3)
-		{
-			if ((*b)->index < (*b)->next->index)
-				sb(b, counter);
-		}
-		else
-			sort_three_in_b(a, b, counter);
-		push_sorted_to_a(a, b, count, counter);
-	}
-}
-
 void	quicksort_a(t_stack **a, t_stack **b, int count, t_op_counter *counter)
 {
 	int	median;
@@ -124,8 +73,6 @@ void	quicksort_a(t_stack **a, t_stack **b, int count, t_op_counter *counter)
 
 	rotated = 0;
 	pushed = 0;
-	// if (count <= 3)
-	// 	return (sort_three_on_top(a, b, 'a', count, counter));
 	if (count <= 5)
 		return (sort_top_in_a(a, b, count, counter));
 	median = find_median(*a, count);
@@ -148,6 +95,22 @@ void	quicksort_a(t_stack **a, t_stack **b, int count, t_op_counter *counter)
 	quicksort_b(a, b, pushed, counter);
 }
 
+int	check_count_in_order(t_stack *b, int count)
+{
+	if (!b)
+		return (0);
+	while (count > 1)
+	{
+		if (!b->next)
+			break ;
+		if (b->index < b->next->index)
+			return (0);
+		b = b->next;
+		count--;
+	}
+	return (1);
+}
+
 void	quicksort_b(t_stack **a, t_stack **b, int count, t_op_counter *counter)
 {
 	int	median;
@@ -156,8 +119,6 @@ void	quicksort_b(t_stack **a, t_stack **b, int count, t_op_counter *counter)
 
 	pushed = 0;
 	rotated = 0;
-	// if (count <= 3)
-	// 	return (sort_three_on_top(a, b, 'b', count, counter));
 	if (count <= 4)
 		return (sort_top_in_b(a, b, count, counter));
 	median = find_median(*b, count);
