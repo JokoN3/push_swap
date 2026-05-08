@@ -6,7 +6,7 @@
 /*   By: lvan-win <lvan-win@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/05/01 14:58:13 by lvan-win      #+#    #+#                 */
-/*   Updated: 2026/05/08 14:40:09 by lvan-win      ########   odam.nl         */
+/*   Updated: 2026/05/08 15:48:33 by lvan-win      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,13 @@ void	adaptive(t_stack **a, t_stack **b, t_op_counter *count)
 
 int	insert(t_stack **a, t_stack **b, t_op_counter *count, int i)
 {
+	int	len;
 	int	back;
 
+	len = stack_size(*a);
 	back = 0;
 	pb(a, b, count);
-	while ((*b)->index > (*a)->index && (*a)->index != 0)
+	while ((*b)->index > (*a)->index && i < len)
 	{
 		if (back > 0)
 			back++;
@@ -52,6 +54,8 @@ void	insert_sort(t_stack **a, t_stack **b, t_op_counter *count)
 	int	len;
 	int	i;
 
+	if (in_order(*a))
+		return ;
 	len = stack_size(*a);
 	i = 0;
 	while (i < len - 1)

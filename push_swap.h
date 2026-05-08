@@ -6,11 +6,7 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/09 18:13:52 by yoneshev      #+#    #+#                 */
-<<<<<<< HEAD
-/*   Updated: 2026/05/08 16:08:32 by lvan-win      ########   odam.nl         */
-=======
-/*   Updated: 2026/05/08 14:20:47 by lvan-win      ########   odam.nl         */
->>>>>>> 4044d7a (insertion sort working and in adaptive)
+/*   Updated: 2026/05/08 16:14:05 by lvan-win      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
