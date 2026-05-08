@@ -6,7 +6,7 @@
 /*   By: lvan-win <lvan-win@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/05/01 14:58:13 by lvan-win      #+#    #+#                 */
-/*   Updated: 2026/05/08 15:48:33 by lvan-win      ########   odam.nl         */
+/*   Updated: 2026/05/08 17:43:50 by lvan-win      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	adaptive(t_stack **a, t_stack **b, t_op_counter *count)
 	else if (count->disorder >= 0.2 && count->disorder < 0.5)
 		messy_room_sort(a, b, count);
 	else
-		quicksort_a(a, b, stack_size(*a));
+		slinky_a(a, b, stack_size(*a), count);
 }
 
 int	insert(t_stack **a, t_stack **b, t_op_counter *count, int i)
@@ -61,7 +61,13 @@ void	insert_sort(t_stack **a, t_stack **b, t_op_counter *count)
 	while (i < len - 1)
 	{
 		if ((*a)->index > (*a)->next->index)
-			i = insert(a, b, count, i);
+		{
+			if ((*a)->next->next == NULL
+			|| (*a)->index < (*a)->next->next->index)
+				sa(a, count);
+			else
+				i = insert(a, b, count, i);
+		}
 		else
 		{
 			ra(a, count);
