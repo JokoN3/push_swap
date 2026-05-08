@@ -6,7 +6,7 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/15 18:00:02 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/05/08 14:34:32 by yoneshev      ########   odam.nl         */
+/*   Updated: 2026/05/08 16:08:05 by lvan-win      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ void	benchmark_mode(t_op_counter count, int strategy)
 {
 	ft_putstr_fd("[bench] disorder: ", 2);
 	print_disorder(count.disorder, 2);
-	ft_putstr_fd("\n", 2);
 	if (strategy == SIMPLE)
 		ft_putstr_fd("[bench] strategy: Cocktail Shaker Sort / O(n^2)\n", 2); // fix this
 	if (strategy == COMPLEX)

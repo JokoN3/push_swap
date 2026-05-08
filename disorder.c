@@ -6,7 +6,7 @@
 /*   By: lvan-win <lvan-win@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/15 16:26:05 by lvan-win      #+#    #+#                 */
-/*   Updated: 2026/05/01 13:32:56 by lvan-win      ########   odam.nl         */
+/*   Updated: 2026/05/01 15:18:34 by lvan-win      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,17 +42,18 @@ void	print_disorder(float disorder, int fd)
 	char	c;
 	int		next;
 
-	c = (int) disorder + '0';
-	write(fd, &c, 1);
+	disorder = disorder * 100;
+	ft_putnbr_fd((int) disorder, 2);
 	write(fd, ".", 1);
 	disorder = disorder * 10;
 	c = (int) disorder % 10 + '0';
-	write(fd, &c, 1);
+	write(fd, &c, 2);
 	disorder = disorder * 10;
 	next = (int)(disorder * 10) % 10;
 	if (next >= 5)
 		c = (int) disorder % 10 + '0' + 1;
 	else
 		c = (int) disorder % 10 + '0';
-	write(fd, &c, 1);
+	write(fd, &c, 2);
+	ft_putstr_fd("%\n", 2);
 }
