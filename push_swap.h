@@ -87,6 +87,8 @@ void	rotate_to_start(t_stack **a, t_op_counter *count);
 void	cocktail_sort(t_stack **a, t_op_counter *count, int bound);
 
 int		square_root(int n);
+void	buckets_to_b(t_stack **a, t_stack **b, t_op_counter *count, int sqrt_n);
+void	back_and_sort(t_stack **a, t_stack **b, t_op_counter *count, int sqrt_n);
 void	messy_room_sort(t_stack **a, t_stack **b, t_op_counter *count);
 
 int		index_stack(t_stack **stack_a);
@@ -120,6 +122,6 @@ void	init_counter(t_op_counter *count);
 void	print_ops(t_op_counter count);
 
 float	compute_disorder(t_stack *a);
-void 	print_disorder(float disorder, int fd);
+void	print_disorder(float disorder, int fd);
 
 #endif

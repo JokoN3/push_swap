@@ -23,10 +23,8 @@ void	run_algorithm(t_stack **a, t_stack **b, int strategy, int bench)
 	if (strategy == SIMPLE)
 		bubble_sort(a, &count);
 	if (strategy == COMPLEX)
-		slinky_a(a, b, stack_size(*a), &count);
-	// if (strategy == COMPLEX)
-	// 	three_way_quick_a(a, b, stack_size(*a), &count);
-	bubble_sort(a, &count);
+		slinky_a(a, b, stack_size(*a));
+	messy_room_sort(a, b, &count);
 	if (bench)
 		benchmark_mode(count, SIMPLE);
 }

@@ -12,6 +12,7 @@ SRCS = main.c parsing.c operations.c operations_utils.c \
 		disorder.c algorithm_utils.c \
 		swap.c push.c rotate.c rev_rotate.c \
 		sort_on_top.c sort_top_utils.c\
+    bucket_sort.c \
 		
 OBJS = $(SRCS:.c=.o)
 
