@@ -6,7 +6,7 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/26 16:39:00 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/04/26 16:48:49 by yoneshev      ########   odam.nl         */
+/*   Updated: 2026/04/26 18:35:50 by yoneshev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,36 +32,36 @@ int	find_median(t_stack *stack, int count)
 	return (median);
 }
 
-void	run_operations_chain(t_stack **a, t_stack **b, char *operations)
+void	run_op_chain(t_stack **a, t_stack **b, char *ops, t_op_counter *counter)
 {
-	while (*operations)
+	while (*ops)
 	{
-		if (!ft_strncmp(operations, "pa", 2))
-			push(a, b);
-		else if (!ft_strncmp(operations, "pb", 2))
-			push(b, a);
-		else if (!ft_strncmp(operations, "sa", 2))
-			swap(a);
-		else if (!ft_strncmp(operations, "sb", 2))
-			swap(b);
-		operations += 2;
+		if (!ft_strncmp(ops, "pa", 2))
+			pa(a, b, counter);
+		else if (!ft_strncmp(ops, "pb", 2))
+			pb(a, b, counter);
+		else if (!ft_strncmp(ops, "sa", 2))
+			sa(a, counter);
+		else if (!ft_strncmp(ops, "sb", 2))
+			sb(b, counter);
+		ops += 2;
 	}
 }
 
-void	rotate_a(t_stack **stack_a, int rotated)
+void	rotate_a(t_stack **a, int rotated, t_op_counter *counter)
 {
 	while (rotated--)
-		rev_rotate(stack_a);
+		rra(a, counter);
 }
 
-void	rotate_b(t_stack **stack_b, int rotated)
+void	rotate_b(t_stack **stack_b, int rotated, t_op_counter *counter)
 {
 	while (rotated--)
-		rev_rotate(stack_b);
+		rrb(stack_b, counter);
 }
 
-void	push_sorted_to_a(t_stack **stack_a, t_stack **stack_b, int count)
+void	push_sorted_to_a(t_stack **a, t_stack **b, int count, t_op_counter *counter)
 {
 	while (count--)
-		push(stack_a, stack_b);
+		pa(a, b, counter);
 }
