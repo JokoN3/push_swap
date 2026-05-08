@@ -6,7 +6,7 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/05/01 13:40:08 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/05/08 13:49:28 by yoneshev      ########   odam.nl         */
+/*   Updated: 2026/05/08 16:18:55 by yoneshev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	sort_five_in_a(t_stack **a, t_stack **b, t_op_counter *counter)
 	arr[2] = (*a)->next->next->index;
 	arr[3] = (*a)->next->next->next->index;
 	arr[4] = (*a)->next->next->next->next->index;
+	if (check_order(arr, 5) == 1)
+		return ;
 	bubble_helper(arr, 5);
 	rotated = push_biggest(a, b, counter, arr);
 	rotated += push_biggest(a, b, counter, arr);
@@ -44,6 +46,8 @@ void	sort_four_in_a(t_stack **a, t_stack **b, t_op_counter *counter)
 	arr[1] = (*a)->next->index;
 	arr[2] = (*a)->next->next->index;
 	arr[3] = (*a)->next->next->next->index;
+	if (check_order(arr, 4) == 1)
+		return ;
 	bubble_helper(arr, 4);
 	while (arr[0] != (*a)->index)
 	{
