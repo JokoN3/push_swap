@@ -6,7 +6,7 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/10 12:51:18 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/05/08 16:07:45 by lvan-win      ########   odam.nl         */
+/*   Updated: 2026/05/08 16:13:11 by lvan-win      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int main(int ac, char **av)
 	int		bench;
 	int		offset;
 	char	**args;
+	t_op_counter	count;//
 
 	if (ac < 2)
 		return (ft_putstr_fd("Error\n", 1), 1);
@@ -55,7 +56,9 @@ int main(int ac, char **av)
 		free_arr(args);
 	if (!index_stack(&stack_a))
 		return (1);
-	ft_putnbr_fd(bench, 1);
+	// ft_putnbr_fd(bench, 1);
+	init_counter(&count);//
+	// insert_sort(&stack_a, &stack_b, &count);//
 	run_algorithm(&stack_a, &stack_b, strategy, bench);
 	free_stack(stack_a);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: lvan-win <lvan-win@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/05/01 14:58:13 by lvan-win      #+#    #+#                 */
-/*   Updated: 2026/05/08 13:49:19 by lvan-win      ########   odam.nl         */
+/*   Updated: 2026/05/08 14:40:09 by lvan-win      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	adaptive(t_stack **a, t_stack **b, t_op_counter *count)
 {
 	if (count->disorder < 0.2)
-		cocktail_sort(a, count, stack_size(*a));// make insertion sort
+		insert_sort(a, b, count);
 	else if (count->disorder >= 0.2 && count->disorder < 0.5)
 		messy_room_sort(a, b, count);
 	else
@@ -25,10 +25,10 @@ void	adaptive(t_stack **a, t_stack **b, t_op_counter *count)
 int	insert(t_stack **a, t_stack **b, t_op_counter *count, int i)
 {
 	int	back;
-	
+
 	back = 0;
 	pb(a, b, count);
-	while ((*b)->index > (*a)->index)
+	while ((*b)->index > (*a)->index && (*a)->index != 0)
 	{
 		if (back > 0)
 			back++;
@@ -51,11 +51,10 @@ void	insert_sort(t_stack **a, t_stack **b, t_op_counter *count)
 {
 	int	len;
 	int	i;
-	int	back;
 
 	len = stack_size(*a);
 	i = 0;
-	while (i < len);
+	while (i < len - 1)
 	{
 		if ((*a)->index > (*a)->next->index)
 			i = insert(a, b, count, i);
@@ -65,4 +64,5 @@ void	insert_sort(t_stack **a, t_stack **b, t_op_counter *count)
 			i++;
 		}
 	}
+	ra(a, count);
 }

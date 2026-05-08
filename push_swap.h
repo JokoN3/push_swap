@@ -6,7 +6,11 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/09 18:13:52 by yoneshev      #+#    #+#                 */
+<<<<<<< HEAD
 /*   Updated: 2026/05/08 16:08:32 by lvan-win      ########   odam.nl         */
+=======
+/*   Updated: 2026/05/08 14:20:47 by lvan-win      ########   odam.nl         */
+>>>>>>> 4044d7a (insertion sort working and in adaptive)
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +116,9 @@ void	bubble_helper(int *arr, int size);
 int		push_biggest(t_stack **a, t_stack **b, t_op_counter *c, int *arr);
 
 void	adaptive(t_stack **a, t_stack **b, t_op_counter *count);
+
+void	insert_sort(t_stack **a, t_stack **b, t_op_counter *count);
+int		insert(t_stack **a, t_stack **b, t_op_counter *count, int i);
 
 int		validate_input(char **av, int allocated_av);
 int		check_dup(char **av);
