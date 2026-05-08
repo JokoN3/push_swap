@@ -6,7 +6,7 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/15 18:00:02 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/04/26 16:08:06 by lvan-win      ########   odam.nl         */
+/*   Updated: 2026/05/08 14:34:32 by yoneshev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,11 @@ void	benchmark_mode(t_op_counter count, int strategy)
 	print_disorder(count.disorder, 2);
 	ft_putstr_fd("\n", 2);
 	if (strategy == SIMPLE)
-		ft_putstr_fd("[bench] strategy: Bubble sort / O(n^2)\n", 2); // fix this
+		ft_putstr_fd("[bench] strategy: Cocktail Shaker Sort / O(n^2)\n", 2); // fix this
+	if (strategy == COMPLEX)
+		ft_putstr_fd("[bench] strategy: Slinky Sort / O(n log n)\n", 2);
+	if (strategy == MEDIUM)
+		ft_putstr_fd("[bench] strategy: Messy Room Sort / O(n√n)\n", 2);
 	ft_putstr_fd("[bench] total_ops: ", 2);
 	count.total = count.sa + count.sb + count.ss
 	+ count.pa + count.pb + count.ra + count.rb

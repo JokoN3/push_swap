@@ -6,7 +6,7 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/10 12:51:18 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/05/08 14:21:11 by yoneshev      ########   odam.nl         */
+/*   Updated: 2026/05/08 14:41:28 by yoneshev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,18 @@ void	run_algorithm(t_stack **a, t_stack **b, int strategy, int bench)
 {
 	t_op_counter	count;
 
-	(void)bench;
 	init_counter(&count);
 	count.disorder = compute_disorder(*a);
 	if (strategy == SIMPLE)
 		bubble_sort(a, &count);
-	if (strategy == COMPLEX)
+	else if (strategy == COMPLEX)
 		slinky_a(a, b, stack_size(*a), &count);
-	messy_room_sort(a, b, &count);
+	else if (strategy == MEDIUM)
+		messy_room_sort(a, b, &count);
+	else if(!strategy || strategy == ADAPTIVE)
+		messy_room_sort(a, b, &count); // add adaptive
 	if (bench)
-		benchmark_mode(count, SIMPLE);
+		benchmark_mode(count, strategy);
 }
 
 int main(int ac, char **av)
