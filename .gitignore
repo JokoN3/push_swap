@@ -6,3 +6,8 @@ checker_linux
 *.o
 *.a
 libft/
+
+# Other
+catt
+quicksort_old.c
+sort_on_top_old.c
