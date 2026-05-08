@@ -6,7 +6,7 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/10 12:51:18 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/05/08 16:04:22 by lvan-win      ########   odam.nl         */
+/*   Updated: 2026/05/08 16:07:45 by lvan-win      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ void	run_algorithm(t_stack **a, t_stack **b, int strategy, int bench)
 
 	init_counter(&count);
 	count.disorder = compute_disorder(*a);
-	if (strategy == ADAPTIVE)
-		adaptive(a, b, &count);
 	if (strategy == SIMPLE)
 		cocktail_sort(a, &count, stack_size(*a));
 	else if (strategy == COMPLEX)
@@ -28,7 +26,7 @@ void	run_algorithm(t_stack **a, t_stack **b, int strategy, int bench)
 	else if (strategy == MEDIUM)
 		messy_room_sort(a, b, &count);
 	else if(!strategy || strategy == ADAPTIVE)
-		messy_room_sort(a, b, &count); // add adaptive
+		adaptive(a, b, &count);
 	if (bench)
 		benchmark_mode(count, strategy);
 }
@@ -57,6 +55,7 @@ int main(int ac, char **av)
 		free_arr(args);
 	if (!index_stack(&stack_a))
 		return (1);
+	ft_putnbr_fd(bench, 1);
 	run_algorithm(&stack_a, &stack_b, strategy, bench);
 	free_stack(stack_a);
 	return (0);
