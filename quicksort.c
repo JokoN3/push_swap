@@ -6,7 +6,7 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/22 13:42:50 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/05/08 13:33:18 by yoneshev      ########   odam.nl         */
+/*   Updated: 2026/05/08 14:14:19 by yoneshev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	sort_three_in_b(t_stack **a, t_stack **b, t_op_counter *counter)
 		run_op_chain(a, b, "sbpapapa", counter);
 }
 
-void	quicksort_a(t_stack **a, t_stack **b, int count, t_op_counter *counter)
+void	slinky_a(t_stack **a, t_stack **b, int count, t_op_counter *counter)
 {
 	int	median;
 	int	pushed;
@@ -91,27 +91,11 @@ void	quicksort_a(t_stack **a, t_stack **b, int count, t_op_counter *counter)
 	}
 	if (rotated != stack_size(*a))
 		rotate_a(a, rotated, counter);
-	quicksort_a(a, b, rotated, counter);
-	quicksort_b(a, b, pushed, counter);
+	slinky_a(a, b, rotated, counter);
+	slinky_b(a, b, pushed, counter);
 }
 
-int	check_count_in_order(t_stack *b, int count)
-{
-	if (!b)
-		return (0);
-	while (count > 1)
-	{
-		if (!b->next)
-			break ;
-		if (b->index < b->next->index)
-			return (0);
-		b = b->next;
-		count--;
-	}
-	return (1);
-}
-
-void	quicksort_b(t_stack **a, t_stack **b, int count, t_op_counter *counter)
+void	slinky_b(t_stack **a, t_stack **b, int count, t_op_counter *counter)
 {
 	int	median;
 	int	pushed;
@@ -137,6 +121,6 @@ void	quicksort_b(t_stack **a, t_stack **b, int count, t_op_counter *counter)
 	}
 	if (rotated != stack_size(*b))
 		rotate_b(b, rotated, counter);
-	quicksort_a(a, b, pushed, counter);
-	quicksort_b(a, b, rotated, counter);
+	slinky_a(a, b, pushed, counter);
+	slinky_b(a, b, rotated, counter);
 }

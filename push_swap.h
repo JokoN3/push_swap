@@ -6,7 +6,7 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/09 18:13:52 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/05/01 16:17:03 by yoneshev      ########   odam.nl         */
+/*   Updated: 2026/05/08 14:14:30 by yoneshev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,8 @@ void	sort_three_in_a(t_stack **a, t_stack **b, t_op_counter *counter);
 void	sort_three_in_b(t_stack **a, t_stack **b, t_op_counter *counter);
 void	sort_three_on_top(t_stack **a, t_stack **b, char ab, int count, t_op_counter *counter);
 int		find_median(t_stack *stack, int count);
-void	quicksort_a(t_stack **a, t_stack **b, int count, t_op_counter *counter);
-void	quicksort_b(t_stack **a, t_stack **b, int count, t_op_counter *counter);
+void	slinky_a(t_stack **a, t_stack **b, int count, t_op_counter *counter);
+void	slinky_b(t_stack **a, t_stack **b, int count, t_op_counter *counter);
 void	rotate_b(t_stack **stack_b, int rotated, t_op_counter *counter);
 void	rotate_a(t_stack **a, int rotated, t_op_counter *counter);
 void	run_op_chain(t_stack **a, t_stack **b, char *ops, t_op_counter *counter);
@@ -105,6 +105,9 @@ void	three_way_quick_a(t_stack **a, t_stack **b, int count, t_op_counter *counte
 
 void	sort_top_in_a(t_stack **a, t_stack **b, int count, t_op_counter *counter);
 void	sort_top_in_b(t_stack **a, t_stack **b, int count, t_op_counter *counter);
+void	sort_four_in_a(t_stack **a, t_stack **b, t_op_counter *counter);
+void	bubble_helper(int *arr, int size);
+int		push_biggest(t_stack **a, t_stack **b, t_op_counter *c, int *arr);
 
 int		validate_input(char **av, int allocated_av);
 int		check_dup(char **av);

@@ -6,35 +6,11 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/05/01 13:40:08 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/05/08 13:24:34 by yoneshev      ########   odam.nl         */
+/*   Updated: 2026/05/08 13:49:28 by yoneshev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	bubble_helper(int *arr, int size)
-{
-	int	i;
-	int	j;
-	int	temp;
-
-	i = 0;
-	while (i < size)
-	{
-		j = 1;
-		while (j < size)
-		{
-			if (arr[j] < arr[j - 1])
-			{
-				temp = arr[j];
-				arr[j] = arr[j - 1];
-				arr[j - 1] = temp;
-			}
-			j++;
-		}
-		i++;
-	}
-}
 
 void	sort_five_in_a(t_stack **a, t_stack **b, t_op_counter *counter)
 {
@@ -48,25 +24,14 @@ void	sort_five_in_a(t_stack **a, t_stack **b, t_op_counter *counter)
 	arr[3] = (*a)->next->next->next->index;
 	arr[4] = (*a)->next->next->next->next->index;
 	bubble_helper(arr, 5);
-	while (arr[0] != (*a)->index && arr[1] != (*a)->index)
-	{
-		ra(a, counter);
-		rotated++;
-	}
-	pb(a, b, counter);
-	while (arr[0] != (*a)->index && arr[1] != (*a)->index)
-	{
-		ra(a, counter);
-		rotated++;
-	}
-	pb(a, b, counter);
+	rotated = push_biggest(a, b, counter, arr);
+	rotated += push_biggest(a, b, counter, arr);
 	while (rotated--)
 		rra(a, counter);
 	sort_three_in_a(a, b, counter);
 	if ((*b)->index < (*b)->next->index)
 		sb(b, counter);
-	pa(a, b, counter);
-	pa(a, b, counter);
+	run_op_chain(a, b, "papa", counter);
 }
 
 void	sort_four_in_a(t_stack **a, t_stack **b, t_op_counter *counter)
