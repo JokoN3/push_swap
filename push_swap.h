@@ -6,11 +6,7 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/09 18:13:52 by yoneshev      #+#    #+#                 */
-<<<<<<< HEAD
-/*   Updated: 2026/05/08 16:14:05 by lvan-win      ########   odam.nl         */
-=======
-/*   Updated: 2026/05/08 16:18:26 by yoneshev      ########   odam.nl         */
->>>>>>> 34ea018 (fixed already ordered 1-5)
+/*   Updated: 2026/05/08 16:55:23 by yoneshev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +94,6 @@ void	messy_room_sort(t_stack **a, t_stack **b, t_op_counter *count);
 int		index_stack(t_stack **stack_a);
 void	sort_three_in_a(t_stack **a, t_stack **b, t_op_counter *counter);
 void	sort_three_in_b(t_stack **a, t_stack **b, t_op_counter *counter);
-void	sort_three_on_top(t_stack **a, t_stack **b, char ab, int count, t_op_counter *counter);
 int		find_median(t_stack *stack, int count);
 void	slinky_a(t_stack **a, t_stack **b, int count, t_op_counter *counter);
 void	slinky_b(t_stack **a, t_stack **b, int count, t_op_counter *counter);

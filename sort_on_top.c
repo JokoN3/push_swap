@@ -6,7 +6,7 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/05/01 13:40:08 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/05/08 16:18:55 by yoneshev      ########   odam.nl         */
+/*   Updated: 2026/05/12 16:09:16 by yoneshev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,36 +83,36 @@ void	sort_four_in_b(t_stack **a, t_stack **b, t_op_counter *counter)
 	sort_three_in_b(a, b, counter);
 }
 
-void	sort_top_in_b(t_stack **a, t_stack **b, int count, t_op_counter *counter)
+void	sort_top_in_b(t_stack **a, t_stack **b, int c, t_op_counter *counter)
 {
-	if (count == 1)
+	if (c == 1)
 		pa(a, b, counter);
-	if (count == 2)
+	if (c == 2)
 	{
 		if ((*b)->index < (*b)->next->index)
 			sb(b, counter);
 		run_op_chain(a, b, "papa", counter);
 	}
-	if (count == 3)
+	if (c == 3)
 		sort_three_in_b(a, b, counter);
-	if (count == 4)
+	if (c == 4)
 		sort_four_in_b(a, b, counter);
 }
 
-void	sort_top_in_a(t_stack **a, t_stack **b, int count, t_op_counter *counter)
+void	sort_top_in_a(t_stack **a, t_stack **b, int c, t_op_counter *counter)
 {
-	if (count == 1)
+	if (c == 1)
 		return ;
-	if (count == 2)
+	if (c == 2)
 	{
 		if ((*a)->index > (*a)->next->index)
 			sa(a, counter);
 		return ;
 	}
-	if (count == 3)
+	if (c == 3)
 		sort_three_in_a(a, b, counter);
-	if (count == 4)
+	if (c == 4)
 		sort_four_in_a(a, b, counter);
-	if (count == 5)
-		sort_five_in_a(a, b, counter);	
+	if (c == 5)
+		sort_five_in_a(a, b, counter);
 }

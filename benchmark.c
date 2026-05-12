@@ -6,7 +6,7 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/15 18:00:02 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/05/13 13:15:32 by yoneshev      ########   odam.nl         */
+/*   Updated: 2026/05/13 13:19:07 by yoneshev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,8 @@ void	benchmark_mode(t_op_counter count, int strategy)
 		print_adaptive(count);
 	ft_putstr_fd("[bench] total_ops: ", 2);
 	count.total = count.sa + count.sb + count.ss
-	+ count.pa + count.pb + count.ra + count.rb
-	+ count.rr + count.rra + count.rrb + count.rrr;//do this somewhere else cause of live coding?
+		+ count.pa + count.pb + count.ra + count.rb
+		+ count.rr + count.rra + count.rrb + count.rrr;
 	ft_putnbr_fd(count.total, 2);
 	ft_putstr_fd("\n", 2);
 	print_ops(count);

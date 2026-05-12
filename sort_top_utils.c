@@ -6,7 +6,7 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/05/08 13:49:01 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/05/08 16:18:03 by yoneshev      ########   odam.nl         */
+/*   Updated: 2026/05/12 16:10:54 by yoneshev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ int	check_order(int *arr, int count)
 {
 	if (count == 5)
 	{
-		if (arr[0] < arr[1] && arr[1] < arr[2] && arr[2] < arr[3] && arr[3] < arr[4])
+		if (arr[0] < arr[1] && arr[1] < arr[2]
+			&& arr[2] < arr[3] && arr[3] < arr[4])
 			return (1);
 		else
 			return (0);
