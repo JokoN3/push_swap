@@ -6,7 +6,7 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/26 16:39:00 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/04/26 18:35:50 by yoneshev      ########   odam.nl         */
+/*   Updated: 2026/05/12 16:11:41 by yoneshev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ void	rotate_b(t_stack **stack_b, int rotated, t_op_counter *counter)
 		rrb(stack_b, counter);
 }
 
-void	push_sorted_to_a(t_stack **a, t_stack **b, int count, t_op_counter *counter)
+void	push_sorted_to_a(t_stack **a, t_stack **b, int count, t_op_counter *c)
 {
 	while (count--)
-		pa(a, b, counter);
+		pa(a, b, c);
 }

@@ -6,12 +6,11 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/10 12:17:22 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/05/08 16:08:08 by lvan-win      ########   odam.nl         */
+/*   Updated: 2026/05/12 16:12:31 by yoneshev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 t_stack	*init_stack_a(t_stack *stack_a, char **av)
 {
@@ -24,7 +23,7 @@ t_stack	*init_stack_a(t_stack *stack_a, char **av)
 	head->num = ft_atoi(*av);
 	av++;
 	head->next = NULL;
-	stack_a = head;	
+	stack_a = head;
 	while (*av)
 	{
 		node = add_new_node();

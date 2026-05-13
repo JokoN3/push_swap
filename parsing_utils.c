@@ -6,7 +6,7 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/15 14:26:18 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/04/20 18:44:29 by yoneshev      ########   odam.nl         */
+/*   Updated: 2026/05/12 16:13:34 by yoneshev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	print_stack(t_stack *stack)
 {
-	while(stack)
+	while (stack)
 	{
-		ft_putstr_fd("num: ", 1); // new
+		ft_putstr_fd("num: ", 1);
 		ft_putnbr_fd(stack->num, 1);
-		ft_putstr_fd("   |   index: ", 1); // new
-		ft_putnbr_fd(stack->index, 1); //new
+		ft_putstr_fd("   |   index: ", 1);
+		ft_putnbr_fd(stack->index, 1);
 		ft_putchar_fd('\n', 1);
 		stack = stack->next;
 	}
@@ -50,7 +50,7 @@ void	free_stack(t_stack *stack)
 
 void	free_arr(char **arr)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (arr[i])

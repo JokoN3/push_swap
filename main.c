@@ -6,7 +6,7 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/10 12:51:18 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/05/08 16:14:37 by lvan-win      ########   odam.nl         */
+/*   Updated: 2026/05/08 16:46:45 by yoneshev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,16 @@ void	run_algorithm(t_stack **a, t_stack **b, int strategy, int bench)
 	t_op_counter	count;
 
 	init_counter(&count);
-	count.disorder = compute_disorder(*a);
+	if (stack_size(*a) == 1)
+		count.disorder = 0;
+	else
+		count.disorder = compute_disorder(*a);
+	if (in_order(*a))
+	{
+		if (bench)
+			benchmark_mode(count, strategy);
+		return ;
+	}
 	if (strategy == SIMPLE)
 		cocktail_sort(a, &count, stack_size(*a));
 	else if (strategy == COMPLEX)

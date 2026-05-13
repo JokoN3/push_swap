@@ -6,7 +6,7 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/22 13:42:50 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/05/08 14:14:19 by yoneshev      ########   odam.nl         */
+/*   Updated: 2026/05/12 16:07:18 by yoneshev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,21 +47,20 @@ void	sort_three_in_b(t_stack **a, t_stack **b, t_op_counter *counter)
 	n1 = *b;
 	n2 = (*b)->next;
 	n3 = (*b)->next->next;
-	if (n1->index > n2->index && n1->index > n2->index && n2->index > n3->index) // 3 2 1
+	if (n1->index > n2->index && n1->index > n2->index && n2->index > n3->index)
 		run_op_chain(a, b, "papapa", counter);
-	else if (n1->index > n2->index && n1->index > n3->index) // 3 1 2
+	else if (n1->index > n2->index && n1->index > n3->index)
 		run_op_chain(a, b, "pasbpapa", counter);
-	else if (n1->index < n2->index && n1->index < n3->index) //1 x x
+	else if (n1->index < n2->index && n1->index < n3->index)
 	{
-		if (n2->index < n3->index) //1 2 3
+		if (n2->index < n3->index)
 			run_op_chain(a, b, "sbpasbpasapa", counter);
-		else // 1 3 2
+		else
 			run_op_chain(a, b, "sbpasbpapa", counter);
 	}
-	else if (n1->index > n2->index) //2 1 3
-		run_op_chain(a, b, "pasbpasapa", counter);	
-	// sb(b, counter);
-	else // 2 3 1
+	else if (n1->index > n2->index)
+		run_op_chain(a, b, "pasbpasapa", counter);
+	else
 		run_op_chain(a, b, "sbpapapa", counter);
 }
 
