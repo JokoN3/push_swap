@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   quicksort.c                                        :+:    :+:            */
+/*   slinky_sort.c                                      :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/22 13:42:50 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/05/12 16:07:18 by yoneshev      ########   odam.nl         */
+/*   Updated: 2026/05/13 17:26:43 by yoneshev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,60 +66,56 @@ void	sort_three_in_b(t_stack **a, t_stack **b, t_op_counter *counter)
 
 void	slinky_a(t_stack **a, t_stack **b, int count, t_op_counter *counter)
 {
-	int	median;
-	int	pushed;
-	int	rotated;
+	int	arr[3];
 
-	rotated = 0;
-	pushed = 0;
+	arr[ROTATED] = 0;
+	arr[PUSHED] = 0;
 	if (count <= 5)
 		return (sort_top_in_a(a, b, count, counter));
-	median = find_median(*a, count);
+	arr[MEDIAN] = find_median(*a, count);
 	while (count--)
 	{
-		if ((*a)->index < median)
+		if ((*a)->index < arr[MEDIAN])
 		{
 			pb(a, b, counter);
-			pushed++;
+			arr[PUSHED]++;
 		}
 		else
 		{
 			ra(a, counter);
-			rotated++;
+			arr[ROTATED]++;
 		}
 	}
-	if (rotated != stack_size(*a))
-		rotate_a(a, rotated, counter);
-	slinky_a(a, b, rotated, counter);
-	slinky_b(a, b, pushed, counter);
+	if (arr[ROTATED] != stack_size(*a))
+		rotate_a(a, arr[ROTATED], counter);
+	slinky_a(a, b, arr[ROTATED], counter);
+	slinky_b(a, b, arr[PUSHED], counter);
 }
 
 void	slinky_b(t_stack **a, t_stack **b, int count, t_op_counter *counter)
 {
-	int	median;
-	int	pushed;
-	int	rotated;
+	int	arr[3];
 
-	pushed = 0;
-	rotated = 0;
+	arr[PUSHED] = 0;
+	arr[ROTATED] = 0;
 	if (count <= 4)
 		return (sort_top_in_b(a, b, count, counter));
-	median = find_median(*b, count);
+	arr[MEDIAN] = find_median(*b, count);
 	while (count--)
 	{
-		if ((*b)->index > median)
+		if ((*b)->index > arr[MEDIAN])
 		{
 			pa(a, b, counter);
-			pushed++;
+			arr[PUSHED]++;
 		}
 		else
 		{
 			rb(b, counter);
-			rotated++;
+			arr[ROTATED]++;
 		}
 	}
-	if (rotated != stack_size(*b))
-		rotate_b(b, rotated, counter);
-	slinky_a(a, b, pushed, counter);
-	slinky_b(a, b, rotated, counter);
+	if (arr[ROTATED] != stack_size(*b))
+		rotate_b(b, arr[ROTATED], counter);
+	slinky_a(a, b, arr[PUSHED], counter);
+	slinky_b(a, b, arr[ROTATED], counter);
 }

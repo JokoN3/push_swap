@@ -6,12 +6,11 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/10 12:51:18 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/05/13 15:35:21 by yoneshev      ########   odam.nl         */
+/*   Updated: 2026/05/13 17:47:04 by yoneshev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 void	run_algorithm(t_stack **a, t_stack **b, int strategy, int bench)
 {
@@ -36,44 +35,44 @@ void	run_algorithm(t_stack **a, t_stack **b, int strategy, int bench)
 		slinky_a(a, b, stack_size(*a), &count);
 	else if (strategy == MEDIUM)
 		messy_room_sort(a, b, &count);
-	else if(strategy == ADAPTIVE)
+	else if (strategy == ADAPTIVE)
 		adaptive(a, b, &count);
 	if (bench)
 		benchmark_mode(count, strategy);
 }
 
-int main(int ac, char **av)
+int	get_offset(int ac, char **av, int *strategy, int *bench)
 {
-	t_stack *stack_a;
-	t_stack *stack_b = NULL;
-	int		strategy;
-	int		bench;
-	int		offset;
-	char	**args;
-	t_op_counter	count;//
+	int	offset;
 
 	if (ac == 1)
-		return (0);
-	if (ac < 2)
-		return (ft_putstr_fd("Error\n", 1), 1);
-	offset = check_for_flags(av + 1, &strategy, &bench);
-	if (ac == offset + 1)
-		args = ft_split(av[offset], ' ');
+		exit(0);
+	offset = check_for_flags(av + 1, strategy, bench);
+	return (offset);
+}
+
+int	main(int ac, char **av)
+{
+	t_stack		*stack_a;
+	t_stack		*stack_b;
+	t_params	pr;
+	char		**args;
+
+	stack_b = NULL;
+	pr.offset = get_offset(ac, av, &pr.strategy, &pr.bench);
+	if (ac == pr.offset + 1)
+		args = ft_split(av[pr.offset], ' ');
 	else
-		args = av + offset;
-	if (validate_input(args, ac - (offset + 1)) == 0)
+		args = av + pr.offset;
+	if (validate_input(args, ac - (pr.offset + 1)) == 0)
 		return (1);
 	stack_a = NULL;
 	stack_a = init_stack_a(stack_a, args);
-	if (ac == offset + 1)
+	if (ac == pr.offset + 1)
 		free_arr(args);
 	if (!index_stack(&stack_a))
 		return (1);
-	// ft_putnbr_fd(bench, 1);
-	init_counter(&count);//
-	// insert_sort(&stack_a, &stack_b, &count);//
-	run_algorithm(&stack_a, &stack_b, strategy, bench);
+	run_algorithm(&stack_a, &stack_b, pr.strategy, pr.bench);
 	free_stack(stack_a);
 	return (0);
 }
-

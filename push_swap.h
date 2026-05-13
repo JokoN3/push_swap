@@ -6,7 +6,7 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/09 18:13:52 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/05/13 13:58:47 by yoneshev      ########   odam.nl         */
+/*   Updated: 2026/05/13 17:46:33 by yoneshev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 # define COMPLEX 3
 # define MEDIUM 4
 # define BENCH 5
+# define MEDIAN 0
+# define PUSHED 1
+# define ROTATED 2
 
 # include <stddef.h>
 # include "limits.h"
@@ -46,6 +49,13 @@ typedef struct s_operation_counter
 	int		rrr;
 	int		total;
 }	t_op_counter;
+
+typedef struct s_params
+{
+	int	strategy;
+	int	bench;
+	int	offset;
+}	t_params;
 
 int		check_for_flags(char **av, int *strategy, int *bench);
 int		validate_input(char **av, int allocated_av);
