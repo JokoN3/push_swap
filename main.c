@@ -6,7 +6,7 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/10 12:51:18 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/05/08 16:46:45 by yoneshev      ########   odam.nl         */
+/*   Updated: 2026/05/13 15:35:21 by yoneshev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	run_algorithm(t_stack **a, t_stack **b, int strategy, int bench)
 	t_op_counter	count;
 
 	init_counter(&count);
+	if (!strategy)
+		strategy = ADAPTIVE;
 	if (stack_size(*a) == 1)
 		count.disorder = 0;
 	else
@@ -34,7 +36,7 @@ void	run_algorithm(t_stack **a, t_stack **b, int strategy, int bench)
 		slinky_a(a, b, stack_size(*a), &count);
 	else if (strategy == MEDIUM)
 		messy_room_sort(a, b, &count);
-	else if(!strategy || strategy == ADAPTIVE)
+	else if(strategy == ADAPTIVE)
 		adaptive(a, b, &count);
 	if (bench)
 		benchmark_mode(count, strategy);
@@ -50,6 +52,8 @@ int main(int ac, char **av)
 	char	**args;
 	t_op_counter	count;//
 
+	if (ac == 1)
+		return (0);
 	if (ac < 2)
 		return (ft_putstr_fd("Error\n", 1), 1);
 	offset = check_for_flags(av + 1, &strategy, &bench);

@@ -6,7 +6,7 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/15 18:00:02 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/05/13 13:43:01 by yoneshev      ########   odam.nl         */
+/*   Updated: 2026/05/13 15:19:37 by yoneshev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ void	print_adaptive(t_op_counter count)
 	if (count.disorder < 0.2)
 		ft_putstr_fd("O(n)\n", 2);
 	else if (count.disorder >= 0.2 && count.disorder < 0.5)
-		ft_putstr_fd("O(n log n)\n", 2);
-	else
 		ft_putstr_fd("O(n√n)\n", 2);
+	else
+		ft_putstr_fd("O(n log n)\n", 2);
 }
 
 void	benchmark_mode(t_op_counter count, int strategy)

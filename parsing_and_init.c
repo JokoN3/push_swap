@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   parsing.c                                          :+:    :+:            */
+/*   parsing_and_init.c                                 :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/10 12:17:22 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/05/13 13:43:05 by yoneshev      ########   odam.nl         */
+/*   Updated: 2026/05/13 15:35:00 by yoneshev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	check_for_flags(char **av, int *strategy, int *bench)
 {
 	int	offset;
 
+	*bench = 0;
 	offset = 1;
 	if (!av[1])
 		return (offset);
@@ -55,8 +56,6 @@ int	check_for_flags(char **av, int *strategy, int *bench)
 		*strategy = 0;
 	if (!ft_strcmp(*av, "--bench") || !ft_strcmp(av[1], "--bench"))
 		*bench = BENCH;
-	else
-		*bench = 0;
 	if (*strategy)
 		offset++;
 	if (*bench)
