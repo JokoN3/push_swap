@@ -6,7 +6,7 @@
 /*   By: lvan-win <lvan-win@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/10 15:32:10 by lvan-win      #+#    #+#                 */
-/*   Updated: 2026/04/26 18:10:08 by lvan-win      ########   odam.nl         */
+/*   Updated: 2026/05/13 13:28:16 by yoneshev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,34 +78,4 @@ void	cocktail_sort(t_stack **a, t_op_counter *count, int bound)
 		bound = bound - 2;
 	}
 	rotate_to_start(a, count);
-}
-
-// remove simple bubble sort if we don't use it anymore?
-// if we do use it we need to fix it: pa instead of using push directly
-void	bubble_sort(t_stack **a, t_op_counter *count)
-{
-	int	i;
-
-	while (!in_order(*a))
-	{
-		i = 1;
-		while (i < stack_size(*a))
-		{
-			if ((*a)->num > (*a)->next->num)
-			{
-				swap(a);
-				count->sa++;
-				write(1, "sa\n", 3);
-			}
-			if (in_order(*a))
-				return ;
-			rotate(a);
-			count->ra++;
-			write(1, "ra\n", 3);
-			i++;
-		}
-		rotate(a);
-		count->ra++;
-		write(1, "ra\n", 3);
-	}
 }

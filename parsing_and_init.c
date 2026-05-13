@@ -6,7 +6,7 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/10 12:17:22 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/05/12 16:12:31 by yoneshev      ########   odam.nl         */
+/*   Updated: 2026/05/13 13:43:05 by yoneshev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,19 @@ int	check_for_flags(char **av, int *strategy, int *bench)
 	if (*bench)
 		offset++;
 	return (offset);
+}
+void	init_counter(t_op_counter *count)
+{
+	count->sa = 0;
+	count->sb = 0;
+	count->ss = 0;
+	count->pa = 0;
+	count->pb = 0;
+	count->ra = 0;
+	count->rb = 0;
+	count->rr = 0;
+	count->rra = 0;
+	count->rrb = 0;
+	count->rrr = 0;
+	count->total = 0;
 }

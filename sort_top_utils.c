@@ -6,7 +6,7 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/05/08 13:49:01 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/05/12 16:10:54 by yoneshev      ########   odam.nl         */
+/*   Updated: 2026/05/13 13:33:47 by yoneshev      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	push_biggest(t_stack **a, t_stack **b, t_op_counter *c, int *arr)
 	return (r);
 }
 
-int	check_order(int *arr, int count)
+int	check_order_top(int *arr, int count)
 {
 	if (count == 5)
 	{
