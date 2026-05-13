@@ -6,7 +6,7 @@
 /*   By: yoneshev <yoneshev@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/15 18:00:02 by yoneshev      #+#    #+#                 */
-/*   Updated: 2026/05/08 16:08:05 by lvan-win      ########   odam.nl         */
+/*   Updated: 2026/05/08 17:26:18 by lvan-win      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,20 +55,33 @@ void	print_ops(t_op_counter count)
 	ft_putchar_fd('\n', 2);
 }
 
+void	print_adaptive(t_op_counter count)
+{
+	ft_putstr_fd("[bench] strategy: Adaptive / ", 2);
+	if (count.disorder < 0.2)
+		ft_putstr_fd("O(n)\n", 2);
+	else if (count.disorder >= 0.2 && count.disorder < 0.5)
+		ft_putstr_fd("O(n log n)\n", 2);
+	else
+		ft_putstr_fd("O(n√n)\n", 2);
+}
+
 void	benchmark_mode(t_op_counter count, int strategy)
 {
 	ft_putstr_fd("[bench] disorder: ", 2);
 	print_disorder(count.disorder, 2);
 	if (strategy == SIMPLE)
-		ft_putstr_fd("[bench] strategy: Cocktail Shaker Sort / O(n^2)\n", 2); // fix this
+		ft_putstr_fd("[bench] strategy: Cocktail Shaker Sort / O(n^2)\n", 2);
 	if (strategy == COMPLEX)
 		ft_putstr_fd("[bench] strategy: Slinky Sort / O(n log n)\n", 2);
 	if (strategy == MEDIUM)
 		ft_putstr_fd("[bench] strategy: Messy Room Sort / O(n√n)\n", 2);
+	if (strategy == ADAPTIVE)
+		print_adaptive(count);
 	ft_putstr_fd("[bench] total_ops: ", 2);
 	count.total = count.sa + count.sb + count.ss
 	+ count.pa + count.pb + count.ra + count.rb
-	+ count.rr + count.rra + count.rrb + count.rrr;
+	+ count.rr + count.rra + count.rrb + count.rrr;//do this somewhere else cause of live coding?
 	ft_putnbr_fd(count.total, 2);
 	ft_putstr_fd("\n", 2);
 	print_ops(count);
